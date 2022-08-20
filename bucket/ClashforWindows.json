@@ -54,7 +54,7 @@
         "    $Content = $Content.Replace('$CFWPath', \"$CFWPath\")",
         "    $Content = $Content.Replace('$CorePath', \"$CorePath\")",
         "    $Content | Set-Content -Path \"$dir\\update-firewall-rules.ps1\"",
-        "    Start-Process PowerShell.exe -Verb RunAs -ArgumentList \"$dir\\update-firewall-rules.ps1\" -Wait",
+        "    Start-Process PowerShell.exe -Verb RunAs -ArgumentList \"$dir\\update-firewall-rules.ps1\" -Wait -ErrorAction SilentlyContinue",
         "} else {",
         "    Write-Host 'Missing files, please update scoop buckets and re-install this app' -ForegroundColor Red",
         "}"
