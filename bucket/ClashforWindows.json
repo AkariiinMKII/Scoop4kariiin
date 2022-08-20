@@ -1,0 +1,97 @@
+{
+    "homepage": "https://github.com/Fndroid/clash_for_windows_pkg",
+    "description": "A Windows GUI based on Clash",
+    "version": "0.19.27",
+    "license": "MIT",
+    "notes": [
+        "This manifest uses a script, which needs admin privilege, to modify Windows firewall rules for system stack in TUN mode.",
+        "If it failed in installation, you can manually run:",
+        "Start-Process PowerShell.exe -Verb RunAs -ArgunmentList \"$dir\\update-firewall-rules.ps1\""
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.19.27/Clash.for.Windows.Setup.0.19.27.exe#/dl.7z",
+            "hash": "70b04ca5ac3c0282fd8c30456bce7d72321da0a4b8026c7133133144fe3377d4",
+            "pre_install": [
+                "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
+                "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\`$R0\" -Force -Recurse"
+            ]
+        },
+        "32bit": {
+            "url": "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.19.27/Clash.for.Windows.Setup.0.19.27.ia32.exe#/dl.7z",
+            "hash": "ee970ee9ca29737c45773d0df957bd9428847ca27400243ab34fe4d1a8202764",
+            "pre_install": [
+                "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-32.7z\" \"$dir\"",
+                "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\`$R0\" -Force -Recurse"
+            ]
+        }
+    },
+    "installer": {
+        "script": [
+            "if (!(Test-Path \"$persist_dir\\data\")) {",
+            "    New-Item \"$persist_dir\\data\" -Type Directory -Force | Out-Null",
+            "    if (Test-Path \"$env:USERPROFILE\\.config\\clash\") {",
+            "        Copy-Item -Path \"$env:USERPROFILE\\.config\\clash\\*\" -Destination \"$persist_dir\\data\" -Recurse -Container",
+            "    }",
+            "}",
+            "Import-Module $(Join-Path $(Find-BucketDirectory -Root -Name Scoop4kariiin) scripts/DoradoUtils.psm1)",
+            "Mount-ExternalRuntimeData -Source \"$persist_dir\\clash_win\" -Target \"$env:APPDATA\\clash_win\"",
+            "Remove-Module -Name DoradoUtils"
+        ]
+    },
+    "post_install":[
+        "$ScriptsDir = Find-BucketDirectory -Root -Name Scoop4kariiin | Join-Path -ChildPath \"scripts\\ClashforWindows\"",
+        "$CFWPath = Split-Path \"$dir\" | Join-Path -ChildPath \"$version\\Clash for Windows.exe\"",
+        "if ($architecture -eq '32bit') {",
+        "    $CorePath = Split-Path \"$dir\" | Join-Path -ChildPath \"$version\\resources\\static\\files\\win\\ia32\\clash-win32.exe\"",
+        "} else {",
+        "    $CorePath = Split-Path \"$dir\" | Join-Path -ChildPath \"$version\\resources\\static\\files\\win\\x64\\clash-win64.exe\"",
+        "}",
+        "if (Test-Path \"$ScriptsDir\\update-firewall-rules.ps1\") {",
+        "    Copy-Item \"$ScriptsDir\\update-firewall-rules.ps1\" \"$dir\\\"",
+        "    $Content = Get-Content \"$dir\\update-firewall-rules.ps1\"",
+        "    $Content = $Content.Replace('$version', \"$version\")",
+        "    $Content = $Content.Replace('$CFWPath', \"$CFWPath\")",
+        "    $Content = $Content.Replace('$CorePath', \"$CorePath\")",
+        "    $Content | Set-Content -Path \"$dir\\update-firewall-rules.ps1\"",
+        "    Start-Process PowerShell.exe -Verb RunAs -ArgunmentList \"$dir\\update-firewall-rules.ps1\"",
+        "} else {",
+        "    Write-Host 'Missing files, please update scoop buckets and re-install this app' -ForegroundColor Red",
+        "}"
+    ],
+    "uninstaller": {
+        "script": [
+            "Import-Module $(Join-Path $(Find-BucketDirectory -Root -Name Scoop4kariiin) scripts/DoradoUtils.psm1)",
+            "Dismount-ExternalRuntimeData -Target \"$env:APPDATA\\clash_win\"",
+            "Remove-Module -Name DoradoUtils"
+        ]
+    },
+    "shortcuts": [
+        [
+            "Clash for Windows.exe",
+            "Clash for Windows"
+        ]
+    ],
+    "persist": "data",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/$version/Clash.for.Windows.Setup.$version.exe#/dl.7z",
+                "hash": {
+                    "url": "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/$version/sha256sum",
+                    "mode": "extract",
+                    "regex": "(?m)^exe: $sha256"
+                }
+            },
+            "32bit": {
+                "url": "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/$version/Clash.for.Windows.Setup.$version.ia32.exe#/dl.7z",
+                "hash": {
+                    "url": "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/$version/sha256sum",
+                    "mode": "extract",
+                    "regex": "(?m)^ia32-exe: $sha256"
+                }
+            }
+        }
+    }
+}
