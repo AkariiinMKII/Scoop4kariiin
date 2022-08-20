@@ -6,7 +6,7 @@ A bucket for [Scoop](https://scoop.sh), the Windows command-line installer.
 
 ## How do I install these manifests?
 
-Simply follow these steps:
+Simply run following commands:
 
 ```PowerShell
 #Add this bucket to your scoop
