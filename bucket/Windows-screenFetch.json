@@ -1,0 +1,44 @@
+{
+    "version": "1.1.0",
+    "description": "Powershell port of bash/unix screenfetch.",
+    "homepage": "https://github.com/AkariiinMKII/Windows-screenFetch",
+    "license": "Unknown",
+    "notes": [
+        "Run following command to import Windows-screenFetch automatically in Powershell:",
+        "$dir\\append-to-profile.ps1"
+    ],
+    "url": "https://github.com/AkariiinMKII/Windows-screenFetch/archive/v1.1.0.zip",
+    "hash": "5ded663e4a0352650ecc06e7ffce6fd00a44842ff82c2552502eb74d1ea3a80a",
+    "extract_dir": "Windows-screenFetch-1.1.0",
+    "psmodule": {
+        "name": "Windows-screenFetch"
+    },
+    "post_install": [
+        "Remove-Item \"$dir\\LICENSE\", \"$dir\\README.md\" -Force -Recurse",
+        "Import-Module Windows-screenFetch",
+        "$ScriptsDir = $(Join-Path $(Find-BucketDirectory -Root -Name Scoop4kariiin) scripts/Windows-screenFetch)",
+        "$ModifierPath = $(Join-Path $(Find-BucketDirectory -Root -Name Scoop4kariiin) scripts/ModifyPSProfile.psm1)",
+        "'append-to-profile.ps1', 'remove-from-profile.ps1' | ForEach-Object {",
+        "    if ((Test-Path \"$ScriptsDir\\$_\") -and (Test-Path \"$ModifierPath\")) {",
+        "        Copy-Item \"$ScriptsDir\\$_\" \"$dir\\\"",
+        "        $Content = (Get-Content \"$dir\\$_\").Replace('$ModifyPSProfile', \"$ModifierPath\")",
+        "        $content | Set-Content -Path \"$dir\\$_\"",
+        "    } else {",
+        "        Write-Host 'Missing files, please update scoop buckets and reinstall this module again' -ForegroundColor Red",
+        "    }",
+        "}"
+    ],
+    "pre_uninstall": [
+        "if (($cmd -eq 'uninstall') -and (Test-Path \"$dir\\remove-from-profile.ps1\")) {",
+        "    & \"$dir\\remove-from-profile.ps1\"",
+        "}"
+    ],
+    "checkver": {
+        "url": "https://api.github.com/repos/AkariiinMKII/Windows-screenFetch/tags",
+        "regex": "tags/v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://github.com/AkariiinMKII/Windows-screenFetch/archive/v$version.zip",
+        "extract_dir": "Windows-screenFetch-$version"
+    }
+}
