@@ -14,7 +14,7 @@
         "name": "Windows-screenFetch"
     },
     "post_install": [
-        "Remove-Item \"$dir\\LICENSE\", \"$dir\\README.md\" -Force -Recurse",
+        "Remove-Item \"$dir\\.vscode\", \"$dir\\screenshots\", \"$dir\\.gitignore\", \"$dir\\README.md\" -Force -Recurse",
         "Import-Module Windows-screenFetch",
         "$ScriptsDir = $(Join-Path $(Find-BucketDirectory -Root -Name Scoop4kariiin) scripts/Windows-screenFetch)",
         "$ModifierPath = $(Join-Path $(Find-BucketDirectory -Root -Name Scoop4kariiin) scripts/ModifyPSProfile.psm1)",
