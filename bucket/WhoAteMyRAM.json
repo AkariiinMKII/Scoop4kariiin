@@ -14,7 +14,7 @@
         "name": "WhoAteMyRAM"
     },
     "post_install": [
-        "Remove-Item \"$dir\\WhoAteMyRAM-$version\", \"$dir\\LICENSE\", \"$dir\\README.md\" -Force -Recurse",
+        "Remove-Item \"$dir\\LICENSE\", \"$dir\\README.md\" -Force -Recurse",
         "Import-Module WhoAteMyRAM",
         "$ScriptsDir = $(Join-Path $(Find-BucketDirectory -Root -Name Scoop4kariiin) scripts/WhoAteMyRAM)",
         "$ModifierPath = $(Join-Path $(Find-BucketDirectory -Root -Name Scoop4kariiin) scripts/ModifyPSProfile.psm1)",
