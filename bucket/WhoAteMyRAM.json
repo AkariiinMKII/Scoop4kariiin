@@ -5,7 +5,7 @@
     "license": "MIT",
     "notes": [
         "Run following command to import WhoAteMyRAM automatically in Powershell:",
-        "$dir\\append-to-profile.ps1"
+        "$dir\\add-profile-content.ps1"
     ],
     "url": "https://github.com/AkariiinMKII/WhoAteMyRAM/archive/v1.0.5.zip",
     "hash": "801c257fadffc03018e07bd6effae53c3a2d41eccff8b140d40dc0f83ccc4de2",
@@ -16,21 +16,19 @@
     "post_install": [
         "Remove-Item \"$dir\\LICENSE\", \"$dir\\README.md\" -Force -Recurse -ErrorAction SilentlyContinue",
         "Import-Module WhoAteMyRAM",
-        "$ScriptsDir = $(Join-Path $(Find-BucketDirectory -Root -Name Scoop4kariiin) scripts/WhoAteMyRAM)",
-        "$ModifierPath = $(Join-Path $(Find-BucketDirectory -Root -Name Scoop4kariiin) scripts/ModifyPSProfile.psm1)",
-        "'append-to-profile.ps1', 'remove-from-profile.ps1' | ForEach-Object {",
-        "    if ((Test-Path \"$ScriptsDir\\$_\") -and (Test-Path \"$ModifierPath\")) {",
-        "        Copy-Item \"$ScriptsDir\\$_\" \"$dir\\\"",
-        "        $Content = (Get-Content \"$dir\\$_\").Replace('$ModifyPSProfile', \"$ModifierPath\")",
-        "        $content | Set-Content -Path \"$dir\\$_\"",
-        "    } else {",
-        "        Write-Host 'Missing files, please update scoop buckets and reinstall this module again' -ForegroundColor Red",
-        "    }",
+        "$BucketDir = Find-BucketDirectory -Root -Name Scoop4kariiin",
+        "$Scoop4kariiinUtilsPath = Join-Path -Path $BucketDir -ChildPath \"scripts\\Scoop4kariiinUtils.psm1\"",
+        "if (Test-Path $Scoop4kariiinUtilsPath) {",
+        "    Import-Module $Scoop4kariiinUtilsPath",
+        "    New-ProfileModifier -Type module -Name WhoAteMyRAM -BucketDir $BucketDir",
+        "    Remove-Module Scoop4kariiinUtils",
+        "} else {",
+        "    Write-Host 'Missing files, please update scoop buckets and reinstall the manifest.' -ForegroundColor Red",
         "}"
     ],
     "pre_uninstall": [
-        "if (($cmd -eq 'uninstall') -and (Test-Path \"$dir\\remove-from-profile.ps1\")) {",
-        "    & \"$dir\\remove-from-profile.ps1\"",
+        "if (($cmd -eq 'uninstall') -and (Test-Path \"$dir\\remove-profile-content.ps1\")) {",
+        "    & \"$dir\\remove-profile-content.ps1\"",
         "}"
     ],
     "checkver": {
