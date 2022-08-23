@@ -1,5 +1,5 @@
 {
-    "version": "1.2.0",
+    "version": "1.2.1",
     "description": "A Powershell port of bash/unix screenfetch.",
     "homepage": "https://github.com/AkariiinMKII/Windows-screenFetch",
     "license": "Unknown",
@@ -7,9 +7,9 @@
         "Run following command to import Windows-screenFetch automatically in Powershell:",
         "$dir\\append-to-profile.ps1"
     ],
-    "url": "https://github.com/AkariiinMKII/Windows-screenFetch/archive/v1.2.0.zip",
-    "hash": "d79ca31e67bd9b925a6971f6763cdfe81a83e3f86f01c605276483150b33d9d6",
-    "extract_dir": "Windows-screenFetch-1.2.0",
+    "url": "https://github.com/AkariiinMKII/Windows-screenFetch/archive/v1.2.1.zip",
+    "hash": "7c9aabdcc3b37cd022730e9db445061abaeb1fea48bf8d0d854890a1498d40ba",
+    "extract_dir": "Windows-screenFetch-1.2.1",
     "psmodule": {
         "name": "Windows-screenFetch"
     },
