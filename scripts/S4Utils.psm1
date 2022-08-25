@@ -32,13 +32,13 @@ function New-ProfileModifier {
     }
 
     $ScoopDir = Split-Path $BucketDir | Split-Path
-    $AppDir = Join-Path -Path $ScoopDir -ChildPath "\apps\$Name\current\"
-    $S4UtilsPath = Join-Path -Path $BucketDir -ChildPath "\scripts\S4Utils.psm1"
+    $AppDir = $ScoopDir | Join-Path -ChildPath "\apps\$Name\current\"
+    $S4UtilsPath = $BucketDir | Join-Path -ChildPath "\scripts\S4Utils.psm1"
 
     switch ($Type) {
         {$_ -eq "ImportModule"} {
             'add-profile-content', 'remove-profile-content' | ForEach-Object {
-                $TempletPath = Join-Path -Path $BucketDir -ChildPath "\scripts\S4Templates\$_.ps1"
+                $TempletPath = $BucketDir | Join-Path -ChildPath "\scripts\S4Templates\$_.ps1"
                 if (-not(Test-Path $TempletPath)) {
                     Write-Host 'Missing files, please update scoop buckets and reinstall this app.' -ForegroundColor Red
                     Return
