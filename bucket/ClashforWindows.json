@@ -1,7 +1,7 @@
 {
-    "homepage": "https://github.com/Fndroid/clash_for_windows_pkg",
-    "description": "A Windows GUI based on Clash",
     "version": "0.19.27",
+    "description": "A Windows GUI based on Clash",
+    "homepage": "https://github.com/Fndroid/clash_for_windows_pkg",
     "license": "MIT",
     "notes": [
         "This manifest uses a script, which needs admin privilege, to modify Windows firewall rules for system stack in TUN mode.",
@@ -64,6 +64,13 @@
         "    Write-Host 'Missing files, please update scoop buckets and re-install this app' -ForegroundColor Red",
         "}"
     ],
+    "shortcuts": [
+        [
+            "Clash for Windows.exe",
+            "Clash for Windows"
+        ]
+    ],
+    "persist": "data",
     "uninstaller": {
         "script": [
             "$S4UtilsPath = Find-BucketDirectory -Root -Name Scoop4kariiin | Join-Path -ChildPath \"scripts\\S4Utils.psm1\"",
@@ -74,13 +81,6 @@
             "}"
         ]
     },
-    "shortcuts": [
-        [
-            "Clash for Windows.exe",
-            "Clash for Windows"
-        ]
-    ],
-    "persist": "data",
     "checkver": "github",
     "autoupdate": {
         "architecture": {
