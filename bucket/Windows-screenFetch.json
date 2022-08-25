@@ -17,7 +17,7 @@
         "Remove-Item \"$dir\\.vscode\", \"$dir\\screenshots\", \"$dir\\.gitignore\", \"$dir\\README.md\" -Force -Recurse -ErrorAction SilentlyContinue",
         "Import-Module Windows-screenFetch",
         "$BucketDir = Find-BucketDirectory -Root -Name Scoop4kariiin",
-        "$S4UtilsPath = Join-Path -Path $BucketDir -ChildPath \"scripts\\S4Utils.psm1\"",
+        "$S4UtilsPath = $BucketDir | Join-Path -ChildPath \"scripts\\S4Utils.psm1\"",
         "if (Test-Path $S4UtilsPath) {",
         "    Import-Module $S4UtilsPath",
         "    New-ProfileModifier -Type ImportModule -Name Windows-screenFetch -BucketDir $BucketDir",
