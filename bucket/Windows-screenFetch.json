@@ -27,7 +27,8 @@
         "}"
     ],
     "pre_uninstall": [
-        "if (($cmd -eq 'uninstall') -and (Test-Path \"$dir\\remove-profile-content.ps1\")) {",
+        "$S4UtilsPath = Find-BucketDirectory -Root -Name Scoop4kariiin | Join-Path -ChildPath \"scripts\\S4Utils.psm1\"",
+        "if (($cmd -eq 'uninstall') -and (Test-Path \"$dir\\remove-profile-content.ps1\") -and (Test-Path $S4UtilsPat)) {",
         "    & \"$dir\\remove-profile-content.ps1\"",
         "}"
     ],
