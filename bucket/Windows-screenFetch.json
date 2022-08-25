@@ -14,7 +14,7 @@
         "name": "Windows-screenFetch"
     },
     "post_install": [
-        "Remove-Item \"$dir\\.vscode\", \"$dir\\screenshots\", \"$dir\\.gitignore\", \"$dir\\README.md\" -Force -Recurse -ErrorAction SilentlyContinue",
+        "Remove-Item \"$dir\\LICENSE\", \"$dir\\.vscode\", \"$dir\\screenshots\", \"$dir\\.gitignore\", \"$dir\\README.md\" -Force -Recurse -ErrorAction SilentlyContinue",
         "Import-Module Windows-screenFetch",
         "$BucketDir = Find-BucketDirectory -Root -Name Scoop4kariiin",
         "$S4UtilsPath = $BucketDir | Join-Path -ChildPath \"scripts\\S4Utils.psm1\"",
