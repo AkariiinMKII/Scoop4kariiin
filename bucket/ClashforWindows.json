@@ -6,7 +6,8 @@
     "notes": [
         "This manifest uses a script, which needs admin privilege, to modify Windows firewall rules for system stack in TUN mode.",
         "If it failed in installation, you can manually run:",
-        "Start-Process PowerShell.exe -Verb RunAs -ArgumentList \"$dir\\update-firewall-rules.ps1\""
+        "Start-Process PowerShell.exe -Verb RunAs -ArgumentList `",
+        "\"$dir\\update-firewall-rules.ps1\""
     ],
     "architecture": {
         "64bit": {
