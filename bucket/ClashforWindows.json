@@ -1,7 +1,7 @@
 {
-    "homepage": "https://github.com/Fndroid/clash_for_windows_pkg",
-    "description": "A Windows GUI based on Clash",
     "version": "0.19.27",
+    "description": "A Windows GUI based on Clash",
+    "homepage": "https://github.com/Fndroid/clash_for_windows_pkg",
     "license": "MIT",
     "notes": [
         "This manifest uses a script, which needs admin privilege, to modify Windows firewall rules for system stack in TUN mode.",
@@ -34,9 +34,14 @@
             "        Copy-Item -Path \"$env:USERPROFILE\\.config\\clash\\*\" -Destination \"$persist_dir\\data\" -Recurse -Container",
             "    }",
             "}",
-            "Import-Module $(Join-Path $(Find-BucketDirectory -Root -Name Scoop4kariiin) scripts/DoradoUtils.psm1)",
-            "Mount-ExternalRuntimeData -Source \"$persist_dir\\clash_win\" -Target \"$env:APPDATA\\clash_win\"",
-            "Remove-Module -Name DoradoUtils"
+            "$S4UtilsPath = Find-BucketDirectory -Root -Name Scoop4kariiin | Join-Path -ChildPath \"scripts\\S4Utils.psm1\"",
+            "if (Test-Path $S4UtilsPath) {",
+            "    Import-Module $S4UtilsPath",
+            "    Mount-ExternalRuntimeData -Source \"$persist_dir\\clash_win\" -Target \"$env:APPDATA\\clash_win\"",
+            "    Remove-Module -Name S4Utils",
+            "} else {",
+            "    Write-Host 'Missing files, please update scoop buckets and reinstall this app.' -ForegroundColor Red",
+            "}"
         ]
     },
     "post_install":[
@@ -59,13 +64,6 @@
         "    Write-Host 'Missing files, please update scoop buckets and re-install this app' -ForegroundColor Red",
         "}"
     ],
-    "uninstaller": {
-        "script": [
-            "Import-Module $(Join-Path $(Find-BucketDirectory -Root -Name Scoop4kariiin) scripts/DoradoUtils.psm1)",
-            "Dismount-ExternalRuntimeData -Target \"$env:APPDATA\\clash_win\"",
-            "Remove-Module -Name DoradoUtils"
-        ]
-    },
     "shortcuts": [
         [
             "Clash for Windows.exe",
@@ -73,6 +71,16 @@
         ]
     ],
     "persist": "data",
+    "uninstaller": {
+        "script": [
+            "$S4UtilsPath = Find-BucketDirectory -Root -Name Scoop4kariiin | Join-Path -ChildPath \"scripts\\S4Utils.psm1\"",
+            "if (Test-Path $S4UtilsPath) {",
+            "    Import-Module $S4UtilsPath",
+            "    Dismount-ExternalRuntimeData -Target \"$env:APPDATA\\clash_win\"",
+            "    Remove-Module -Name S4Utils",
+            "}"
+        ]
+    },
     "checkver": "github",
     "autoupdate": {
         "architecture": {
