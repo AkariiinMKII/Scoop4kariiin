@@ -44,11 +44,11 @@ function New-ProfileModifier {
     switch ($Type) {
         {$_ -eq "ImportModule"} {
             $GenerateContent = ($ImportUtilsCommand, $RemoveModuleCommand, $ImportModuleCommand, $RemoveUtilsCommand) -Join("`r`n")
-            $GenerateContent | Set-Content -Path "$AppDir\add-profile-content.ps1" -Encoding utf8
+            $GenerateContent | Set-Content -Path "$AppDir\add-profile-content.ps1"
         }
         {$_ -eq "RemoveModule"} {
             $GenerateContent = ($ImportUtilsCommand, $RemoveModuleCommand, $RemoveUtilsCommand) -Join("`r`n")
-            $GenerateContent | Set-Content -Path "$AppDir\remove-profile-content.ps1" -Encoding utf8
+            $GenerateContent | Set-Content -Path "$AppDir\remove-profile-content.ps1"
         }
     }
 }
