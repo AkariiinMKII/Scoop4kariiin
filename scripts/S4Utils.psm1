@@ -6,7 +6,7 @@ function New-ProfileModifier {
         Generate scripts from template.
 
     .PARAMETER Type
-        Type of manifest, support module in current version.
+        Type of scripts to generate.
 
     .PARAMETER Name
         Name of manifest.
@@ -24,31 +24,31 @@ function New-ProfileModifier {
         [string] $BucketDir
     )
 
-    $SupportedType = @("ImportModule")
+    $SupportedType = @("ImportModule", "RemoveModule")
 
     if ($SupportedType -notcontains $Type) {
         Write-Host "Error: Unsupported type." -ForegroundColor Red
         Return
     }
 
+    $S4UtilsPath = $BucketDir | Join-Path -ChildPath "\scripts\S4Utils.psm1"
     $ScoopDir = Split-Path $BucketDir | Split-Path
     $AppDir = $ScoopDir | Join-Path -ChildPath "\apps\$Name\current\"
-    $S4UtilsPath = $BucketDir | Join-Path -ChildPath "\scripts\S4Utils.psm1"
+
+    $ImportUtilsCommand = ("Import-Module ", $S4UtilsPath) -Join("")
+    $RemoveUtilsCommand = "Remove-Module -Name S4Utils"
+
+    $ImportModuleCommand = ("Add-ProfileContent 'Import-Module ", $Name, "'") -Join("")
+    $RemoveModuleCommand = ("Remove-ProfileContent 'Import-Module ", $Name, "'") -Join("")
 
     switch ($Type) {
         {$_ -eq "ImportModule"} {
-            'add-profile-content', 'remove-profile-content' | ForEach-Object {
-                $TempletPath = $BucketDir | Join-Path -ChildPath "\scripts\S4Templates\$_.ps1"
-                if (-not(Test-Path $TempletPath)) {
-                    Write-Host 'Missing files, please update scoop buckets and reinstall this app.' -ForegroundColor Red
-                    Return
-                }
-                $Content = ("'", "Import-Module ", $Name, "'") -Join("")
-                $ProfileContent = Get-Content -Path $TempletPath
-                $ProfileContent = $ProfileContent.Replace('$S4UtilsPath',$S4UtilsPath)
-                $ProfileContent = $ProfileContent.Replace('$Content',$Content)
-                $ProfileContent | Set-Content -Path "$AppDir\$_.ps1" -Encoding utf8
-            }
+            $GenerateContent = ($ImportUtilsCommand, $RemoveModuleCommand, $ImportModuleCommand, $RemoveUtilsCommand) -Join("`r`n")
+            $GenerateContent | Set-Content -Path "$AppDir\add-profile-content.ps1" -Encoding utf8
+        }
+        {$_ -eq "RemoveModule"} {
+            $GenerateContent = ($ImportUtilsCommand, $RemoveModuleCommand, $RemoveUtilsCommand) -Join("`r`n")
+            $GenerateContent | Set-Content -Path "$AppDir\remove-profile-content.ps1" -Encoding utf8
         }
     }
 }
@@ -71,7 +71,7 @@ function Add-ProfileContent {
         New-Item -Path $PROFILE -Value "$Content" -ItemType File -Force | Out-Null
     }
     else {
-        Add-Content -Path $PROFILE -Value "`n$Content" -NoNewLine
+        Add-Content -Path $PROFILE -Value "`r`n$Content" -NoNewLine
     }
 }
 
