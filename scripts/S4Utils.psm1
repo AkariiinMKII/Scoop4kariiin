@@ -76,7 +76,7 @@ function Add-ProfileContent {
         [string] $Content
     )
 
-    if (!(test-path $PROFILE)) {
+    if (-not(Test-Path $PROFILE)) {
         New-Item -Path $PROFILE -Value "$Content" -ItemType File -Force | Out-Null
     }
     else {
@@ -98,7 +98,17 @@ function Remove-ProfileContent {
         [string] $Content
     )
 
-    ((Get-Content -Path $PROFILE -raw) -replace "[\r\n]*$Content",'').trim() | Set-Content $PROFILE -NoNewLine
+    if (-not(Test-Path $PROFILE)) {
+        Return
+    }
+
+    $RawProfile = Get-Content -Path $PROFILE -raw
+
+    if ($null -eq $RawProfile) {
+        Return
+    }
+
+    ($RawProfile -replace "[\r\n]*$Content",'').trim() | Set-Content $PROFILE -NoNewLine
 }
 
 function Mount-ExternalRuntimeData {
