@@ -21,6 +21,7 @@
         "script": [
             "$S4UtilsPath = Find-BucketDirectory -Root -Name Scoop4kariiin | Join-Path -ChildPath \"scripts\\S4Utils.psm1\"",
             "if (Test-Path $S4UtilsPath) {",
+            "    Unblock-File $S4UtilsPath",
             "    Import-Module $S4UtilsPath",
             "    Mount-ExternalRuntimeData -Source \"$persist_dir\\lne_link\" -Target \"$env:APPDATA\\lne_link\"",
             "    Remove-Module -Name S4Utils",
@@ -39,6 +40,7 @@
         "script": [
             "$S4UtilsPath = Find-BucketDirectory -Root -Name Scoop4kariiin | Join-Path -ChildPath \"scripts\\S4Utils.psm1\"",
             "if (Test-Path $S4UtilsPath) {",
+            "    Unblock-File $S4UtilsPath",
             "    Import-Module $S4UtilsPath",
             "    Dismount-ExternalRuntimeData -Target \"$env:APPDATA\\lne_link\"",
             "    Remove-Module -Name S4Utils",
