@@ -6,9 +6,9 @@
     "notes": [
         "This manifest uses a script, which needs admin privilege, to modify Windows firewall rules for system stack in TUN mode.",
         "If it failed in installation, you can manually run:",
-        "Start-Process PowerShell.exe -Verb RunAs -ArgumentList `",
-        "\"$dir\\update-firewall-rules.ps1\""
+        "sudo \"$dir\\update-firewall-rules.ps1\""
     ],
+    "depends": "main/gsudo",
     "architecture": {
         "64bit": {
             "url": "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.19.29/Clash.for.Windows.Setup.0.19.29.exe#/dl.7z",
@@ -61,7 +61,10 @@
         "    $Content = $Content.Replace('$CFWPath', \"$CFWPath\")",
         "    $Content = $Content.Replace('$CorePath', \"$CorePath\")",
         "    $Content | Set-Content -Path \"$dir\\update-firewall-rules.ps1\"",
-        "    Start-Process PowerShell.exe -Verb RunAs -ArgumentList \"$dir\\update-firewall-rules.ps1\" -Wait -ErrorAction SilentlyContinue",
+        "    Write-Host \"Updating Windows firewall rules ...\" -ForegroundColor Yellow",
+        "    Write-Host \"Please approve permission request if UAC prompt pops up.\" -ForegroundColor Yellow",
+        "    Start-Sleep -Seconds 1",
+        "    & \"sudo \"$dir\\update-firewall-rules.ps1\"\"",
         "} else {",
         "    Write-Host 'Missing files, please update scoop buckets and re-install this app' -ForegroundColor Red",
         "}"
