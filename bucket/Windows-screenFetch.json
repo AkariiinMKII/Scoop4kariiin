@@ -2,7 +2,7 @@
     "version": "1.2.5",
     "description": "A Powershell port of bash/unix screenfetch.",
     "homepage": "https://github.com/AkariiinMKII/Windows-screenFetch",
-    "license": "Unknown",
+    "license": "GPL-3.0-only",
     "notes": [
         "Run following command to import Windows-screenFetch automatically in Powershell:",
         "$dir\\add-profile-content.ps1"
