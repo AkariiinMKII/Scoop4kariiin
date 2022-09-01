@@ -32,7 +32,7 @@ function New-ProfileModifier {
     $SupportedType = @("ImportModule", "RemoveModule")
 
     if ($SupportedType -notcontains $Type) {
-        Write-Host "Error: Unsupported type." -ForegroundColor Red
+        Write-Host "[ERROR] Unsupported type." -ForegroundColor Red
         Return
     }
 
@@ -114,32 +114,55 @@ function Remove-ProfileContent {
 function Mount-ExternalRuntimeData {
     <#
     .SYNOPSIS
-        Mount external runtime data
+        Mount external runtime data.
 
     .PARAMETER Source
-        The source path, which is the persist_dir
+        The source path, which is the persist_dir.
 
     .PARAMETER Target
-        The target path, which is the actual path app uses to access the runtime data
+        The target path, which is the actual path app uses to access the runtime data.
+
+    .PARAMETER AppData
+        Mount in $env:APPDATA folder.
     #>
     [CmdletBinding()]
     param (
         [Parameter(Mandatory = $true, Position = 0)]
+        [Alias("Persist")]
         [string] $Source,
-        [Parameter(Mandatory = $true, Position = 1)]
-        [string] $Target
+        [Parameter(Mandatory = $false, Position = 1)]
+        [string] $Target,
+        [Parameter(Mandatory = $false, Position = 2)]
+        [switch] $AppData
     )
 
-    if (Test-Path $Source) {
-        Remove-Item $Target -Force -Recurse -ErrorAction SilentlyContinue
+    if (-not($Target -or $AppData)) {
+        Write-Host "[ERROR] Specify a mount point." -ForegroundColor Red
+        Return
     }
-    else {
+
+    if($AppData) {
+        $Name = Split-Path -Path $Source -Leaf
+        if ($Target) {
+            Write-Host "[WARN] Overwriting `$Target value..." -ForegroundColor DarkYellow
+        }
+        $Target = Join-Path -Path $env:APPDATA -ChildPath $Name
+    }
+
+    if (-not(Test-Path $Source)) {
+        Write-Host "Initializing persist folder..."
         New-Item -ItemType Directory $Source -Force | Out-Null
         if (Test-Path $Target) {
-            Get-ChildItem $Target | Move-Item -Destination $Source -Force
-            Remove-Item $Target
+            Write-Host "Found existing cache, moving to persist folder..."
+            Get-ChildItem $Target | Copy-Item -Destination $Source -Force -Recurse
         }
     }
+
+    if (Test-Path $Target) {
+        Remove-Item $Target -Force -Recurse
+    }
+
+    Write-Host "Mounting runtime cache..."
 
     New-Item -ItemType Junction -Path $Target -Target $Source -Force | Out-Null
 }
@@ -147,19 +170,35 @@ function Mount-ExternalRuntimeData {
 function Dismount-ExternalRuntimeData {
     <#
     .SYNOPSIS
-        Unmount external runtime data
+        Unmount external runtime data.
 
-    .PARAMETER Target
-        The target path, which is the actual path app uses to access the runtime data
+    .PARAMETER Path
+        Name or path of runtime folder, which is the actual path app uses to access the runtime data.
+
+    .PARAMETER AppData
+        Mounted in $env:APPDATA folder.
     #>
     [CmdletBinding()]
     param (
         [Parameter(Mandatory = $true, Position = 0)]
-        [string] $Target
+        [Alias("Name","Target")]
+        [string] $Path,
+        [Parameter(Mandatory = $false, Position = 1)]
+        [switch] $AppData
     )
 
-    if (Test-Path $Target) {
-        Remove-Item $Target -Force -Recurse
+    if ($AppData) {
+        $Name = Split-Path -Path $Path -Leaf
+        $Path = Join-Path -Path $env:APPDATA -ChildPath $Name
+    }
+
+    Write-Host "Dismounting runtime cache..."
+
+    if (Test-Path $Path) {
+        Remove-Item $Path -Force -Recurse
+    }
+    else {
+        Write-Host "[ERROR] Invalid path, continue without dismounting." -ForegroundColor Red
     }
 }
 

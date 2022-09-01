@@ -23,7 +23,7 @@
             "if (Test-Path $S4UtilsPath) {",
             "    Unblock-File $S4UtilsPath",
             "    Import-Module $S4UtilsPath",
-            "    Mount-ExternalRuntimeData -Source \"$persist_dir\\lne_link\" -Target \"$env:APPDATA\\lne_link\"",
+            "    Mount-ExternalRuntimeData -Persist \"$persist_dir\\lne_link\" -AppData",
             "    Remove-Module -Name S4Utils",
             "} else {",
             "    Write-Host 'Missing files, please update scoop buckets and reinstall this app.' -ForegroundColor Red",
@@ -42,7 +42,7 @@
             "if (Test-Path $S4UtilsPath) {",
             "    Unblock-File $S4UtilsPath",
             "    Import-Module $S4UtilsPath",
-            "    Dismount-ExternalRuntimeData -Target \"$env:APPDATA\\lne_link\"",
+            "    Dismount-ExternalRuntimeData -Name \"lne_link\" -AppData",
             "    Remove-Module -Name S4Utils",
             "}"
         ]
