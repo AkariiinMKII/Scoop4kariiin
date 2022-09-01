@@ -1,6 +1,6 @@
 {
     "version": "2.0",
-    "description": "A cleaning tool for Wechat files",
+    "description": "A cleaning tool for Wechat files.",
     "homepage": "https://github.com/blackboxo/CleanMyWechat",
     "license": "MIT",
     "architecture": {

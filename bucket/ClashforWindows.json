@@ -1,6 +1,6 @@
 {
     "version": "0.19.29",
-    "description": "A Windows GUI based on Clash",
+    "description": "A cross-platform GUI based on Clash and Electron.",
     "homepage": "https://github.com/Fndroid/clash_for_windows_pkg",
     "license": "MIT",
     "notes": [
