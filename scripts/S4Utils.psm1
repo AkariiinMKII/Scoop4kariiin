@@ -153,7 +153,7 @@ function Mount-ExternalRuntimeData {
         Write-Host "Initializing persist folder..."
         New-Item -ItemType Directory $Source -Force | Out-Null
         if (Test-Path $Target) {
-            Write-Host "Found existing cache, moving to persist folder..."
+            Write-Host "Found existing runtime cache, moving to persist folder..."
             Get-ChildItem $Target | Copy-Item -Destination $Source -Force -Recurse
         }
     }
