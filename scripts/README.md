@@ -1,4 +1,4 @@
-# About S4Utils
+# About [S4Utils](S4Utils.psm1)
 
 _A PowerShell module for this bucket, which contains several functions to help building app manifests._
 
