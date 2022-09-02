@@ -3,7 +3,7 @@
 function New-ProfileModifier {
     <#
     .SYNOPSIS
-        Generate scripts from template.
+        Generate scripts which modifies PowerShell profile.
 
     .PARAMETER Type
         Type of scripts to generate.
@@ -12,10 +12,10 @@ function New-ProfileModifier {
         Name of manifest.
 
     .PARAMETER BucketDir
-        Path of bucket root directory.
+        Path of Scoop4kariiin bucket root directory.
 
     .PARAMETER ModuleName
-        Use this parameter if module name differs from app name.
+        Use this parameter if module name differs from manifest name.
     #>
     [CmdletBinding()]
     param (
@@ -65,7 +65,7 @@ function New-ProfileModifier {
 function Add-ProfileContent {
     <#
     .SYNOPSIS
-        Add certain content to PSProfile.
+        Add certain content to PowerShell profile.
 
     .PARAMETER Content
         Content to be added.
@@ -87,7 +87,7 @@ function Add-ProfileContent {
 function Remove-ProfileContent {
     <#
     .SYNOPSIS
-        Remove certain content from PSProfile.
+        Remove certain content from PowerShell profile.
 
     .PARAMETER Content
         Content to be removed.
@@ -123,7 +123,7 @@ function Mount-ExternalRuntimeData {
         The target path, which is the actual path app uses to access the runtime data.
 
     .PARAMETER AppData
-        Mount in $env:APPDATA folder.
+        Use this parameter if target folder locates in $env:APPDATA using the name of persisted folder.
     #>
     [CmdletBinding()]
     param (
@@ -176,7 +176,7 @@ function Dismount-ExternalRuntimeData {
         Name or path of runtime folder, which is the actual path app uses to access the runtime data.
 
     .PARAMETER AppData
-        Mounted in $env:APPDATA folder.
+        Use this parameter if target folder locates in $env:APPDATA using the name of persisted folder.
     #>
     [CmdletBinding()]
     param (
