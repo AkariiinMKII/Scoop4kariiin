@@ -1,5 +1,5 @@
 {
-    "version": "1.0.6",
+    "version": "1.0.7",
     "description": "A command-line tool for memory usage statistics.",
     "homepage": "https://github.com/AkariiinMKII/WhoAteMyRAM",
     "license": "MIT",
@@ -7,9 +7,9 @@
         "Run following command to import WhoAteMyRAM automatically in Powershell:",
         "$dir\\add-profile-content.ps1"
     ],
-    "url": "https://github.com/AkariiinMKII/WhoAteMyRAM/archive/v1.0.6.zip",
-    "hash": "11229e303ca6a01ef6137a02393a46cfdc9680e1f9312058b494ddfb82bae090",
-    "extract_dir": "WhoAteMyRAM-1.0.6",
+    "url": "https://github.com/AkariiinMKII/WhoAteMyRAM/archive/v1.0.7.zip",
+    "hash": "6d52b7ecef439382010f8f2cc9eeb60e18864f2af20cc359e896aeddd15a096a",
+    "extract_dir": "WhoAteMyRAM-1.0.7",
     "psmodule": {
         "name": "WhoAteMyRAM"
     },
