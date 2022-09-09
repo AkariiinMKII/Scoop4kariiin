@@ -64,7 +64,12 @@
         "    Write-Host \"Updating Windows firewall rules ...\" -ForegroundColor Yellow",
         "    Write-Host \"Please approve permission request if UAC prompt pops up.\" -ForegroundColor Yellow",
         "    Start-Sleep -Seconds 1",
-        "    & \"sudo \"$dir\\update-firewall-rules.ps1\"\"",
+        "    sudo \"$dir\\update-firewall-rules.ps1\"",
+        "    if ($?) {",
+        "        Write-Host 'Successfully updated Windows firewall rules!' -ForegroundColor Green",
+        "    } else {",
+        "        Write-Host '[ERROR] Failed updating Windows firewall rules!' -ForegroundColor Red",
+        "    }",
         "} else {",
         "    Write-Host 'Missing files, please update scoop buckets and re-install this app' -ForegroundColor Red",
         "}"
