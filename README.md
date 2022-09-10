@@ -13,7 +13,7 @@ Simply run following commands:
 scoop bucket add Scoop4kariiin https://github.com/AkariiinMKII/Scoop4kariiin
 
 #Install apps by manifest name
-scoop install <manifest>
+scoop install <manifest> # Use Scoop4kariiin/<manifest> if app name conflicts with ones in other bucket.
 ```
 
 ## How do I contribute new manifests?
