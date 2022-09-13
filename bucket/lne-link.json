@@ -26,7 +26,7 @@
             "    Mount-ExternalRuntimeData -Persist \"$persist_dir\\lne_link\" -AppData",
             "    Remove-Module -Name S4Utils",
             "} else {",
-            "    Write-Host 'Missing files, please update scoop buckets and reinstall this app.' -ForegroundColor Red",
+            "    Write-Host 'Missing files, please readd Scoop4kariiin bucket and reinstall this app.' -ForegroundColor Red",
             "}"
         ]
     },

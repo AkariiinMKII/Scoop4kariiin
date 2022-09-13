@@ -25,7 +25,7 @@
         "    New-ProfileModifier -Type RemoveModule -Name Windows-screenFetch -BucketDir $BucketDir",
         "    Remove-Module S4Utils",
         "} else {",
-        "    Write-Host 'Missing files, please update scoop buckets and reinstall this app.' -ForegroundColor Red",
+        "    Write-Host 'Missing files, please readd Scoop4kariiin bucket and reinstall this app.' -ForegroundColor Red",
         "}"
     ],
     "pre_uninstall": [

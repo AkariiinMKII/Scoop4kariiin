@@ -42,7 +42,7 @@
             "    Mount-ExternalRuntimeData -Persist \"$persist_dir\\clash_win\" -AppData",
             "    Remove-Module -Name S4Utils",
             "} else {",
-            "    Write-Host 'Missing files, please update scoop buckets and reinstall this app.' -ForegroundColor Red",
+            "    Write-Host 'Missing files, please readd Scoop4kariiin bucket and reinstall this app.' -ForegroundColor Red",
             "}"
         ]
     },
@@ -51,8 +51,7 @@
         "$CFWPath = Get-ChildItem -Path \"$dir\" -Filter \"Clash for Windows.exe\" | Select-Object -ExpandProperty Target",
         "$CorePath = Get-ChildItem -Path \"$dir\" -Filter \"clash-win*.exe\" -Recurse | Select-Object -ExpandProperty Target",
         "if (Test-Path \"$ScriptsDir\\update-firewall-rules.ps1\") {",
-        "    Copy-Item \"$ScriptsDir\\update-firewall-rules.ps1\" \"$dir\\\"",
-        "    $Content = Get-Content \"$dir\\update-firewall-rules.ps1\"",
+        "    $Content = Get-Content \"$ScriptsDir\\update-firewall-rules.ps1\"",
         "    $Content = $Content.Replace('$CFWPath', \"$CFWPath\")",
         "    $Content = $Content.Replace('$CorePath', \"$CorePath\")",
         "    $Content | Set-Content -Path \"$dir\\update-firewall-rules.ps1\"",
@@ -66,7 +65,7 @@
         "        Write-Host '[ERROR] Failed updating Windows firewall rules!' -ForegroundColor Red",
         "    }",
         "} else {",
-        "    Write-Host 'Missing files, please update scoop buckets and re-install this app' -ForegroundColor Red",
+        "    Write-Host 'Missing files, please readd Scoop4kariiin bucket and reinstall this app' -ForegroundColor Red",
         "}"
     ],
     "shortcuts": [
