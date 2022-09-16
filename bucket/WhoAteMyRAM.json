@@ -8,7 +8,7 @@
         "$dir\\add-profile-content.ps1"
     ],
     "url": "https://github.com/AkariiinMKII/WhoAteMyRAM/archive/v1.0.14.zip",
-    "hash": "5cfda992630bfb5509dc6e67851742cd61cfd898c9985e5ff076c527a6645070",
+    "hash": "c13022143d2bfd2feb598ceb655ccb7253d09538c5fd1b4e1532eaf3bb879728",
     "extract_dir": "WhoAteMyRAM-1.0.14",
     "psmodule": {
         "name": "WhoAteMyRAM"
