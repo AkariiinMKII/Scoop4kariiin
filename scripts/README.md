@@ -92,6 +92,6 @@ if (Test-Path $S4UtilsPath) {
 
     ... # Call functions according to demands.
 
-    Remove-Module -Name S4Utils # Remove it to avoid conflicts.
+    Remove-Module -Name S4Utils -ErrorAction SilentlyContinue # Remove it to avoid conflicts.
 }
 ```

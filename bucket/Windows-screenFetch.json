@@ -23,13 +23,13 @@
         "    Import-Module $S4UtilsPath",
         "    New-ProfileModifier -Type ImportModule -Name Windows-screenFetch -BucketDir $BucketDir",
         "    New-ProfileModifier -Type RemoveModule -Name Windows-screenFetch -BucketDir $BucketDir",
-        "    Remove-Module S4Utils",
+        "    Remove-Module S4Utils -ErrorAction SilentlyContinue",
         "} else {",
         "    Write-Host 'Missing files, please readd Scoop4kariiin bucket and reinstall this app.' -ForegroundColor Red",
         "}"
     ],
     "pre_uninstall": [
-        "Remove-Module Windows-screenFetch",
+        "Remove-Module Windows-screenFetch -ErrorAction SilentlyContinue",
         "$S4UtilsPath = Find-BucketDirectory -Root -Name Scoop4kariiin | Join-Path -ChildPath \"scripts\\S4Utils.psm1\"",
         "if (($cmd -eq 'uninstall') -and (Test-Path \"$dir\\remove-profile-content.ps1\") -and (Test-Path $S4UtilsPath)) {",
         "    Unblock-File $S4UtilsPath",

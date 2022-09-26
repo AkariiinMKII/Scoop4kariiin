@@ -45,7 +45,7 @@ function New-ProfileModifier {
     $AppDir = $ScoopDir | Join-Path -ChildPath "\apps\$Name\current\"
 
     $ImportUtilsCommand = ("Import-Module ", $S4UtilsPath) -Join("")
-    $RemoveUtilsCommand = "Remove-Module -Name S4Utils"
+    $RemoveUtilsCommand = "Remove-Module -Name S4Utils -ErrorAction SilentlyContinue"
 
     $ImportModuleCommand = ("Add-ProfileContent 'Import-Module ", $ModuleName, "'") -Join("")
     $RemoveModuleCommand = ("Remove-ProfileContent 'Import-Module ", $ModuleName, "'") -Join("")

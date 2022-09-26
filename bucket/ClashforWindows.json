@@ -40,7 +40,7 @@
             "    Unblock-File $S4UtilsPath",
             "    Import-Module $S4UtilsPath",
             "    Mount-ExternalRuntimeData -Persist \"$persist_dir\\clash_win\" -AppData",
-            "    Remove-Module -Name S4Utils",
+            "    Remove-Module -Name S4Utils -ErrorAction SilentlyContinue",
             "} else {",
             "    Write-Host 'Missing files, please readd Scoop4kariiin bucket and reinstall this app.' -ForegroundColor Red",
             "}"
@@ -82,7 +82,7 @@
             "    Unblock-File $S4UtilsPath",
             "    Import-Module $S4UtilsPath",
             "    Dismount-ExternalRuntimeData -Name \"clash_win\" -AppData",
-            "    Remove-Module -Name S4Utils",
+            "    Remove-Module -Name S4Utils -ErrorAction SilentlyContinue",
             "}"
         ]
     },
