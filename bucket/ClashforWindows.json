@@ -35,7 +35,7 @@
             "        Copy-Item -Path \"$env:USERPROFILE\\.config\\clash\\*\" -Destination \"$persist_dir\\data\" -Recurse -Container",
             "    }",
             "}",
-            "$S4UtilsPath = Find-BucketDirectory -Root -Name Scoop4kariiin | Join-Path -ChildPath \"scripts\\S4Utils.psm1\"",
+            "$S4UtilsPath = Find-BucketDirectory -Root -Name $bucket | Join-Path -ChildPath \"scripts\\S4Utils.psm1\"",
             "if (Test-Path $S4UtilsPath) {",
             "    Unblock-File $S4UtilsPath",
             "    Import-Module $S4UtilsPath",
@@ -47,7 +47,7 @@
         ]
     },
     "post_install": [
-        "$ScriptsDir = Find-BucketDirectory -Root -Name Scoop4kariiin | Join-Path -ChildPath \"scripts\\ClashforWindows\"",
+        "$ScriptsDir = Find-BucketDirectory -Root -Name $bucket | Join-Path -ChildPath \"scripts\\ClashforWindows\"",
         "$CFWPath = Get-ChildItem -Path \"$dir\" -Filter \"Clash for Windows.exe\" | Select-Object -ExpandProperty Target",
         "$CorePath = Get-ChildItem -Path \"$dir\" -Filter \"clash-win*.exe\" -Recurse | Select-Object -ExpandProperty Target",
         "if (Test-Path \"$ScriptsDir\\update-firewall-rules.ps1\") {",
@@ -77,7 +77,7 @@
     "persist": "data",
     "uninstaller": {
         "script": [
-            "$S4UtilsPath = Find-BucketDirectory -Root -Name Scoop4kariiin | Join-Path -ChildPath \"scripts\\S4Utils.psm1\"",
+            "$S4UtilsPath = Find-BucketDirectory -Root -Name $install.bucket | Join-Path -ChildPath \"scripts\\S4Utils.psm1\"",
             "if (Test-Path $S4UtilsPath) {",
             "    Unblock-File $S4UtilsPath",
             "    Import-Module $S4UtilsPath",

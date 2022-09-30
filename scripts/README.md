@@ -20,7 +20,7 @@ _Generate scripts which modifies PowerShell profile._
 |----|:----:|:----:|----|
 |`Type`|String|&check;|Type of scripts to generate, support `ImportModule`, `RemoveModule` in current version.|
 |`Name`|String|&check;|Use the name of manifest file.|
-|`BucketDir`|String|&check;|Path of Scoop4kariiin bucket root directory, use `Find-BucketDirectory -Root -Name Scoop4kariiin` in manifest to get the value.|
+|`BucketDir`|String|&check;|Path of Scoop4kariiin bucket root directory.|
 |`ModuleName`|String|&cross;|Value of `name` in `psmodule` field, use this parameter if it differs from manifest name.|
 
 - See [Windows-screenFetch manifest](../bucket/Windows-screenFetch.json) for example.
@@ -83,7 +83,7 @@ _Unmount external runtime data._
 
 ```PowerShell
 # Get the path of S4Utils.
-$S4UtilsPath = Find-BucketDirectory -Root -Name Scoop4kariiin | Join-Path -ChildPath "scripts\S4Utils.psm1"
+$S4UtilsPath = Find-BucketDirectory -Root -Name $bucket | Join-Path -ChildPath "scripts\S4Utils.psm1"
 
 # Import and use if exists.
 if (Test-Path $S4UtilsPath) {
