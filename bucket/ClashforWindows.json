@@ -12,7 +12,7 @@
     "architecture": {
         "64bit": {
             "url": "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.20.5/Clash.for.Windows.Setup.0.20.5.exe#/dl.7z",
-            "hash": "7c4107aaca81b1bbb9887aa9949192195b60d1faa029f19063e761eb3a977422",
+            "hash": "ce9ed981e3c867f0f708a621ff64687d29a1f84c8bec2dc018e6ae14d133bb18",
             "pre_install": [
                 "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
                 "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\`$R0\" -Force -Recurse"
@@ -20,7 +20,7 @@
         },
         "32bit": {
             "url": "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.20.5/Clash.for.Windows.Setup.0.20.5.ia32.exe#/dl.7z",
-            "hash": "1fd96aa9e326f7e158a547853b179daec2922ee96f18463128e05f20d1316e59",
+            "hash": "6496e7047257cdde899fde63103ee5ae8d1725dae406512a7939029ee5234822",
             "pre_install": [
                 "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-32.7z\" \"$dir\"",
                 "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\`$R0\" -Force -Recurse"
