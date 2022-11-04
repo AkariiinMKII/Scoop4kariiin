@@ -9,7 +9,7 @@
         "64bit": {
             "shortcuts": [
                 [
-                    "DiskInfo64S.exe",
+                    "DiskInfo64K.exe",
                     "CrystalDiskInfo Kurei Kei Edition"
                 ]
             ]
@@ -17,7 +17,7 @@
         "32bit": {
             "shortcuts": [
                 [
-                    "DiskInfo32S.exe",
+                    "DiskInfo32K.exe",
                     "CrystalDiskInfo Kurei Kei Edition"
                 ]
             ]
@@ -25,7 +25,7 @@
         "arm64": {
             "shortcuts": [
                 [
-                    "DiskInfoA64S.exe",
+                    "DiskInfoA64K.exe",
                     "CrystalDiskInfo Kurei Kei Edition"
                 ]
             ]
