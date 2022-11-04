@@ -1,0 +1,54 @@
+{
+    "version": "8.17.11",
+    "description": "A HDD/SSD utility software which supports a part of USB, Intel RAID and NVMe.",
+    "homepage": "https://crystalmark.info/en/",
+    "license": "MIT",
+    "url": "https://dotsrc.dl.osdn.net/osdn/crystaldiskinfo/77950/CrystalDiskInfo8_17_11KureiKei.zip",
+    "hash": "c1bcec0b732995a7bc39d4bd83a05f6c51866de798d63a91dba11460bc6817d4",
+    "architecture": {
+        "64bit": {
+            "shortcuts": [
+                [
+                    "DiskInfo64S.exe",
+                    "CrystalDiskInfo Kurei Kei Edition"
+                ]
+            ]
+        },
+        "32bit": {
+            "shortcuts": [
+                [
+                    "DiskInfo32S.exe",
+                    "CrystalDiskInfo Kurei Kei Edition"
+                ]
+            ]
+        },
+        "arm64": {
+            "shortcuts": [
+                [
+                    "DiskInfoA64S.exe",
+                    "CrystalDiskInfo Kurei Kei Edition"
+                ]
+            ]
+        }
+    },
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\DiskInfo.ini\")) {",
+        "    New-Item \"$dir\\DiskInfo.ini\" -ItemType File | Out-Null",
+        "}"
+    ],
+    "persist": [
+        "DiskInfo.ini",
+        "Smart"
+    ],
+    "checkver": {
+        "url": "https://osdn.net/projects/crystaldiskinfo/",
+        "regex": "releases\\/(?<release>[\\d]+)\">CrystalDiskInfo ([\\w.]+)<"
+    },
+    "autoupdate": {
+        "url": "https://dotsrc.dl.osdn.net/osdn/crystaldiskinfo/$matchRelease/CrystalDiskInfo$underscoreVersionKureiKei.zip",
+        "hash": {
+            "url": "https://osdn.net/projects/crystaldiskinfo/releases/rss",
+            "xpath": "//osdn:file[@url='https://osdn.net/projects/crystaldiskinfo/downloads/$matchRelease/CrystalDiskInfo$underscoreVersionKureiKei.zip/']/@sha256"
+        }
+    }
+}
