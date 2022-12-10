@@ -1,5 +1,5 @@
 {
-    "version": "2.0.1",
+    "version": "2.1.0",
     "description": "A custom keyboard configuration manager presented by LNE Lab.",
     "homepage": "https://github.com/ln-org/lne_link",
     "license": "Unknown",
@@ -9,8 +9,8 @@
     ],
     "architecture": {
         "64bit": {
-            "url": "https://github.com/ln-org/lne_link/releases/download/v2.0.1/LINK.Setup.2.0.1.exe#/dl.7z",
-            "hash": "54acbe31b924429f78cc18abfb7e4b9f39fcbc1a18117ef536b7d00dec7d5b1b",
+            "url": "https://github.com/ln-org/lne_link/releases/download/v2.1.0/LINK.Setup.2.1.0.exe#/dl.7z",
+            "hash": "74ebaa054ef108a30c1d9fa8bb7aef556efc24aaa24500fd63020e39b2be8116",
             "pre_install": [
                 "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
                 "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninstall*\" -Force -Recurse"
