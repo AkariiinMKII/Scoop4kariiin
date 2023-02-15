@@ -32,6 +32,13 @@
             "Emby Theater"
         ]
     ],
+    "persist": [
+        "cache",
+        "cec-driver",
+        "config",
+        "data",
+        "logs"
+    ],
     "uninstaller": {
         "script": [
             "$S4UtilsPath = Find-BucketDirectory -Root -Name $install.bucket | Join-Path -ChildPath \"scripts\\S4Utils.psm1\"",
