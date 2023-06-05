@@ -9,7 +9,7 @@
             "hash": "3af7b5c1a33997785c7c452a9e75872582f5a523a4edc3c089c92d88f4ce33e0"
         }
     },
-    "extract_dir": "CleanMyWechat",
+    "extract_dir": "dist",
     "installer": {
         "script": [
             "ensure $persist_dir",
@@ -18,7 +18,7 @@
     },
     "shortcuts": [
         [
-            "start.exe",
+            "main.exe",
             "CleanMyWechat"
         ]
     ],
