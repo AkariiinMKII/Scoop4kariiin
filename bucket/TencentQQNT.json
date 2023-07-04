@@ -50,15 +50,15 @@
     },
     "checkver": {
         "url": "https://cdn-go.cn/qq-web/im.qq.com_new/latest/rainbow/windowsDownloadUrl.js",
-        "regex": "ntVersion\":\"(?<version>[\\d\\.]+).+QQNT\\/(?<MD532>\\w+)\\/QQ(?<LongVersion32>[\\d\\.]+)_x86\\.exe.+QQNT\\/(?<MD564>\\w+)\/QQ(?<LongVersion64>[\\d\\.]+)_x64\\.exe"
+        "regex": "ntVersion\":\"(?<version>[\\d\\.]+)\".+QQNT\\/(?<Address32>\\w+\\/QQ[\\d\\.]+_x86\\.exe)\".+QQNT\\/(?<Address64>\\w+\\/QQ[\\d\\.]+_x64\\.exe)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://dldir1.qq.com/qqfile/qq/QQNT/$matchMD564/QQ$matchLongVersion64_x64.exe#/dl.7z"
+                "url": "https://dldir1.qq.com/qqfile/qq/QQNT/$matchAddress64#/dl.7z"
             },
             "32bit": {
-                "url": "https://dldir1.qq.com/qqfile/qq/QQNT/$matchMD532/QQ$matchLongVersion32_x86.exe#/dl.7z"
+                "url": "https://dldir1.qq.com/qqfile/qq/QQNT/$matchAddress32#/dl.7z"
             }
         }
     }
