@@ -57,7 +57,7 @@
             "32bit": {
                 "regex": "\"ntVersion\":\"(?<version>[\\d\\.]+)\".+QQNT\\/(?<matchMD5>\\w+)\\/QQ(?<matchLongVersion>[\\d\\.]+)_x86.exe\""
             }
-        } 
+        }
     },
     "autoupdate": {
         "architecture": {
