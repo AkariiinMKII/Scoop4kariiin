@@ -62,7 +62,7 @@ _Mount external runtime data._
 |`AppData`|Switch|&cross;|Conveniently mount folder in `$env:APPDATA` by the name of source folder. Value of `$Target` will be overwritten.|
 
 - Either `Target` or `AppData` should be specified.
-- See [lne-link manifest](../bucket/lne-link.json) for example.
+- See [LNE-LINK manifest](../bucket/LNE-LINK.json) for example.
 
 ----
 
@@ -75,7 +75,7 @@ _Unmount external runtime data._
 |`Target`|String|&check;|Path or name of runtime folder mounted by scoop.
 |`AppData`|Switch|&cross;|Conveniently dismount folder in `$env:APPDATA` with folder name in `Target` parameter. Value of `$Target` will be overwritten.|
 
-- See [lne-link manifest](../bucket/lne-link.json) for example.
+- See [LNE-LINK manifest](../bucket/LNE-LINK.json) for example.
 
 ----
 
