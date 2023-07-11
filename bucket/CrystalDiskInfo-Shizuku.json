@@ -3,8 +3,8 @@
     "description": "A HDD/SSD utility software which supports a part of USB, Intel RAID and NVMe.",
     "homepage": "https://crystalmark.info/en/",
     "license": "MIT",
-    "url": "https://crystalmark.info/download/zz/CrystalDiskInfo9_1_0Shizuku.zip",
-    "hash": "abde2996913d8c5c192433128012f1dd480f3d5ee82d3d5a8bb71260ba47cd84",
+    "url": "https://crystalmark.info/download/zz/CrystalDiskInfo9_1_1Shizuku.zip",
+    "hash": "cee8575b8e19855495a1072e628ed7967aa0fd687b1650adf5864fbd7ce88607",
     "architecture": {
         "64bit": {
             "shortcuts": [
