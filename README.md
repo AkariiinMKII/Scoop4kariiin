@@ -1,8 +1,9 @@
 # Scoop4kariiin
 
-[![Tests](https://github.com/AkariiinMKII/Scoop4kariiin/actions/workflows/ci.yml/badge.svg)](https://github.com/AkariiinMKII/Scoop4kariiin/actions/workflows/ci.yml) [![Excavator](https://github.com/AkariiinMKII/Scoop4kariiin/actions/workflows/excavator.yml/badge.svg)](https://github.com/AkariiinMKII/Scoop4kariiin/actions/workflows/excavator.yml)
-![GitHub](https://img.shields.io/github/license/AkariiinMKII/Scoop4kariiin?logo=unlicense&logoColor=959DA5&labelColor=292D32&color=32CD32&link=https%3A%2F%2Fgithub.com%2FAkariiinMKII%2FScoop4kariiin%2Fblob%2Fmain%2FLICENSE)
-![GitHub repo size](https://img.shields.io/github/repo-size/AkariiinMKII/Scoop4kariiin?logo=github&logoColor=959DA5&labelColor=292D32)
+[![License](https://img.shields.io/github/license/AkariiinMKII/Scoop4kariiin?logo=unlicense&logoColor=959DA5&labelColor=292D32&label=License&color=34D058)](https://github.com/AkariiinMKII/Scoop4kariiin/blob/main/LICENSE)
+![Repo Size](https://img.shields.io/github/repo-size/AkariiinMKII/Scoop4kariiin?logo=github&logoColor=959DA5&labelColor=292D32&label=Repo%20Size)
+[![Tests](https://github.com/AkariiinMKII/Scoop4kariiin/actions/workflows/ci.yml/badge.svg)](https://github.com/AkariiinMKII/Scoop4kariiin/actions/workflows/ci.yml)
+[![Excavator](https://github.com/AkariiinMKII/Scoop4kariiin/actions/workflows/excavator.yml/badge.svg)](https://github.com/AkariiinMKII/Scoop4kariiin/actions/workflows/excavator.yml)
 
 A bucket for [Scoop](https://github.com/ScoopInstaller/Scoop), the Windows command-line installer.
 
