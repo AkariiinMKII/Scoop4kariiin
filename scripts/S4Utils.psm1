@@ -9,7 +9,7 @@ function New-ProfileModifier {
         Type of scripts to generate.
 
     .PARAMETER PSModuleName
-        Name of PowerShell module, should be $psmodule.name in most situations.
+        Name of PowerShell module, should be $manifest.psmodule.name in most situations.
 
     .PARAMETER AppDir
         Path of the app directory, should be $dir in most situations.
