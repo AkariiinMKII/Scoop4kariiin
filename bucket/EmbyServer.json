@@ -22,7 +22,9 @@
         ]
     ],
     "persist": "programdata",
-    "checkver": "github",
+    "checkver": {
+        "github": "https://github.com/MediaBrowser/Emby.Releases/"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {

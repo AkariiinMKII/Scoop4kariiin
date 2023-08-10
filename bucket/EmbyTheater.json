@@ -50,7 +50,9 @@
             "}"
         ]
     },
-    "checkver": "github",
+    "checkver": {
+        "github": "https://github.com/MediaBrowser/emby-theater-windows/"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
