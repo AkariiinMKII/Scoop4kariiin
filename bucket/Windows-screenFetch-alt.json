@@ -8,7 +8,7 @@
         "$dir\\add-profile-content.ps1"
     ],
     "url": "https://github.com/AkariiinMKII/Windows-screenFetch/archive/v1.4.2-alt.zip",
-    "hash": "4049660ad35b45c57c28f290f227a626cd9381270ab55ff161d603a9c13f4c9f",
+    "hash": "bc84e57945e0e9a9b2ae54cc599a7de74b79c0078561ffed75633cdc1877f4a4",
     "extract_dir": "Windows-screenFetch-1.4.2-alt",
     "psmodule": {
         "name": "Windows-screenFetch"
