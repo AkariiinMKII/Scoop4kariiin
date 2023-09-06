@@ -23,6 +23,6 @@ scoop install <manifest> # Use Scoop4kariiin/<manifest> if app name conflicts wi
 
 ## How do I contribute new manifests?
 
-To make a new manifest contribution, please read the [Contributing Guide](https://github.com/ScoopInstaller/.github/blob/main/.github/CONTRIBUTING.md).
+To make a new manifest contribution, please read the [Contributing Guide](https://github.com/ScoopInstaller/.github/blob/main/.github/CONTRIBUTING.md) and [App Manifests](https://github.com/ScoopInstaller/Scoop/wiki/App-Manifests) wiki page.
 
-Additionally, here is [a tiny toolkit](scripts/README.md) to help building app manifests.
+Additionally, here is a [PowerShell Script Module](scripts/README.md) to help building app manifests.
