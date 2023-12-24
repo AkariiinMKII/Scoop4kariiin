@@ -1,0 +1,19 @@
+{
+    "version": "4.6.0",
+    "description": "A DirectShow Filter which can convert the frame rate using GPU.",
+    "homepage": "https://bluesky-soft.com/en/BlueskyFRC.html",
+    "license": "Freeware",
+    "url": "https://bluesky-soft.com/common/app/release/bfrc/BlueskyFRC_4.6.0.zip",
+    "hash": "4dbc23909ad1828337f88b67b9c6ba4e12b4e3a5ef2751d8e405863110dd9142",
+    "shortcuts": [
+        [
+            "BlueskyFRCUtil.exe",
+            "Bluesky Frame Rate Converter"
+        ]
+    ],
+    "persist": "BlueskyFRCUtil.exe.config",
+    "checkver": ">Version ([\\d\\.]+) \\(",
+    "autoupdate": {
+        "url": "https://bluesky-soft.com/common/app/release/bfrc/BlueskyFRC_$version.zip"
+    }
+}
