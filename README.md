@@ -19,7 +19,8 @@ scoop bucket add Scoop4kariiin https://github.com/AkariiinMKII/Scoop4kariiin
 scoop install <manifest> # Use Scoop4kariiin/<manifest> if app name conflicts with ones in other bucket.
 ```
 
-**NOTICE:** Some manifests use custom scripts storaged in bucket, installing apps directly by manifest link may cause error in this situation, please add the bucket to your machine first.
+> [!NOTE]
+> Some manifests use custom scripts storaged in bucket, installing apps directly by manifest link may cause error in this situation, please add the bucket to your machine first.
 
 ## How do I contribute new manifests?
 
