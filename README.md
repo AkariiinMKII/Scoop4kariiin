@@ -12,15 +12,23 @@ A bucket for [Scoop](https://github.com/ScoopInstaller/Scoop), the Windows comma
 Simply run following commands:
 
 ```PowerShell
-#Add this bucket to your scoop
+# Add this bucket to your scoop
 scoop bucket add Scoop4kariiin https://github.com/AkariiinMKII/Scoop4kariiin
 
-#Install apps by manifest name
+# Install apps by manifest name
 scoop install <manifest> # Use Scoop4kariiin/<manifest> if app name conflicts with ones in other bucket.
 ```
 
-> [!NOTE]
-> Some manifests use custom scripts storaged in bucket, installing apps directly by manifest link may cause error in this situation, please add the bucket to your machine first.
+> [!IMPORTANT]
+> Some manifests use custom scripts stored in bucket.
+>
+> In this case, installing apps directly from manifest URL will fail with following error:
+>
+> ```PowerShell
+> Missing files, please re-add Scoop4kariiin bucket and re-install this app.
+> ```
+>
+> To solve this error, please add the bucket to your machine first.
 
 ## How do I contribute new manifests?
 
