@@ -45,9 +45,9 @@
     ],
     "checkver": {
         "url": "https://crystalmark.info/en/download/",
-        "regex": "meta name=\"description.+CrystalDiskMark ([\\w\\.]+) - Manual"
+        "regex": "CrystalDiskMark ([\\w\\.]+) &#8211;"
     },
     "autoupdate": {
-        "url": "https://crystalmark.info/download/zz/CrystalDiskMark$underscoreVersionShizuku.zip"
+        "url": "https://zenlayer.dl.sourceforge.net/project/crystaldiskmark/$version/CrystalDiskMark$underscoreVersionShizuku.zip"
     }
 }
