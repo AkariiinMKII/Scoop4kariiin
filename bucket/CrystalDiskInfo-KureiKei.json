@@ -42,7 +42,7 @@
     ],
     "checkver": {
         "url": "https://crystalmark.info/en/download/",
-        "regex": "meta name=\"description.+CrystalDiskInfo ([\\w\\.]+) - Manual"
+        "regex": "CrystalDiskInfo ([\\w\\.]+) &#8211;"
     },
     "autoupdate": {
         "url": "https://crystalmark.info/download/zz/CrystalDiskInfo$underscoreVersionKureiKei.zip"
