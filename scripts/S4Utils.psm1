@@ -212,7 +212,6 @@ function Import-PersistFile {
 
     .PARAMETER Sync
         Create junction instead of copying files.
-
     #>
     [CmdletBinding()]
     param (
