@@ -526,6 +526,4 @@ Export-ModuleMember `
     Dismount-ExternalRuntimeData, `
     Import-PersistItem, `
     New-PersistItem, `
-    Backup-PersistItem, `
-    Import-SelectItem, `
-    Backup-SelectItem
+    Backup-PersistItem
