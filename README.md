@@ -28,7 +28,7 @@ scoop install <manifest> # Use Scoop4kariiin/<manifest> if app name conflicts wi
 > Missing files, please re-add Scoop4kariiin bucket and re-install this app.
 > ```
 >
-> To solve this error, please add the bucket to your machine first.
+> Please add the bucket to your device before installing.
 
 ## How do I contribute new manifests?
 
