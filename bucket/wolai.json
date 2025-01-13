@@ -49,7 +49,7 @@
     },
     "checkver": {
         "url": "https://cdn.wostatic.cn/dist/installers/electron-versions.json",
-        "regex": "wolai\\.Setup\\.(.+)\\.exe"
+        "regex": "Setup\\.(.+)\\.exe"
     },
     "autoupdate": {
         "architecture": {
@@ -57,7 +57,7 @@
                 "url": "https://cdn.wostatic.cn/dist/installers/wolai%20Setup%20$version.exe#/dl.7z",
                 "hash": {
                     "url": "https://cdn.wostatic.cn/dist/installers/electron-versions.json",
-                    "regex": "exe.+\\n.+: \"$base64"
+                    "regex": "exe.+\\n.+ \"$base64"
                 }
             }
         }
