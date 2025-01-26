@@ -16,7 +16,9 @@ Simply run following commands:
 scoop bucket add Scoop4kariiin https://github.com/AkariiinMKII/Scoop4kariiin
 
 # Install apps by manifest name
-scoop install <manifest> # Use Scoop4kariiin/<manifest> if app name conflicts with ones in other bucket.
+scoop install <manifest>
+# If manifest name conflicts with ones in other buckets, use following command instead:
+# scoop install Scoop4kariiin/<manifest>
 ```
 
 > [!IMPORTANT]
@@ -24,7 +26,7 @@ scoop install <manifest> # Use Scoop4kariiin/<manifest> if app name conflicts wi
 >
 > In this case, installing apps directly from manifest URL will fail with following error:
 >
-> ```PowerShell
+> ```Plaintext
 > Missing files, please re-add Scoop4kariiin bucket and re-install this app.
 > ```
 >
