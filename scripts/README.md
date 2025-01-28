@@ -134,9 +134,9 @@ _Backup items to persist directory._
 
 ```PowerShell
 # Get the path of S4Utils.
-# Find-BucketDirectory is a function added by scoop which helps generating bucket path.
-# For Name parameter, use $bucket in installation-ish processes, use $install.bucket in uninstallation-ish processes.
 $S4UtilsPath = Find-BucketDirectory -Root -Name $bucket | Join-Path -ChildPath "scripts\S4Utils.psm1"
+# Find-BucketDirectory is a function added by scoop which helps generating bucket path.
+# For "Name" parameter, use "$bucket" in installation-ish processes, use "$install.bucket" in uninstallation-ish processes.
 
 # Import and use if exists.
 if (Test-Path $S4UtilsPath) {
