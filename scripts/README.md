@@ -61,8 +61,9 @@ _Mount external runtime data._
 |Parameters|Type|Mandatory|Descriptions|
 |----|:----:|:----:|----|
 |`Source`|String|&check;|Path of source folder in scoop persist directory.|
-|`Target`|String|&cross;|The actual path which app uses to access the runtime data.|
-|`AppData`|Switch|&cross;|Conveniently mount folder in `$env:APPDATA` by the name of source folder. Value of `$Target` will be overwritten.|
+|`Target`|String|&cross;|The actual path which app uses to access the runtime data. Conflicts with parameter `AppData` and `LocalAppData`.|
+|`AppData`|Switch|&cross;|Conveniently mount folder in `$env:APPDATA` by the name of source folder. Conflicts with parameter `Target` and `LocalAppData`.|
+|`LocalAppData`|Switch|&cross;|Conveniently mount folder in `$env:LOCALAPPDATA` by the name of source folder. Conflicts with parameter `Target` and `AppData`.|
 
 - Either `Target` or `AppData` should be specified.
 - See [link-plus manifest](../bucket/link-plus.json) for example.
@@ -75,8 +76,9 @@ _Unmount external runtime data._
 
 |Parameters|Type|Mandatory|Descriptions|
 |----|:----:|:----:|----|
-|`Target`|String|&check;|Path or name of runtime folder mounted by scoop.
-|`AppData`|Switch|&cross;|Conveniently dismount folder in `$env:APPDATA` with folder name in `Target` parameter. Value of `$Target` will be overwritten.|
+|`Target`|String|&check;|Path or name of runtime folder mounted by scoop.|
+|`AppData`|Switch|&cross;|Conveniently dismount folder in `$env:APPDATA` with folder name in `Target` parameter. Parent path in `$Target` will be overwritten. Conflicts with parameter `LocalAppData`.|
+|`LocalAppData`|Switch|&cross;|Conveniently dismount folder in `$env:LOCALAPPDATA` with folder name in `Target` parameter. Parent path in `$Target` will be overwritten. Conflicts with parameter `AppData`.|
 
 - See [link-plus manifest](../bucket/link-plus.json) for example.
 
