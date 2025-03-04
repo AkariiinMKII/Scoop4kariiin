@@ -128,35 +128,45 @@ function Mount-ExternalRuntimeData {
         Path of source folder in scoop persist directory.
 
     .PARAMETER Target
-        The actual path which app uses to access the runtime data.
+        The actual path which app uses to access the runtime data. Conflicts with parameter AppData and LocalAppData.
 
     .PARAMETER AppData
-        Mount in $env:APPDATA by the name of source folder. Value of $Target will be overwritten.
+        Mount in $env:APPDATA by the name of source folder. Conflicts with parameter Target and LocalAppData.
+
+    .PARAMETER LocalAppData
+        Mount in $env:LOCALAPPDATA by the name of source folder. Conflicts with parameter Target and AppData.
     #>
     [CmdletBinding()]
     param (
         [Parameter(Mandatory = $true, Position = 0)]
         [Alias("SourcePath", "Persist")]
         [string] $Source,
-        [Parameter(Mandatory = $false, Position = 1)]
+        [Parameter(Mandatory = $true, ParameterSetName = "Target")]
         [Alias("TargetPath", "Runtime")]
         [string] $Target,
-        [Parameter(Mandatory = $false, Position = 2)]
-        [switch] $AppData
+        [Parameter(Mandatory = $true, ParameterSetName = "AppData")]
+        [switch] $AppData,
+        [Parameter(Mandatory = $true, ParameterSetName = "LocalAppData")]
+        [switch] $LocalAppData
     )
 
-    if (-not($Target -or $AppData)) {
+    if (-not($Target -or $AppData -or $LocalAppData)) {
         Write-Host "`n[ERROR] Specify a mount point." -ForegroundColor Red
         return
     }
 
     try {
         if ($AppData) {
+            $RuntimeParent = $env:APPDATA
+        }
+
+        if ($LocalAppData) {
+            $RuntimeParent = $env:LOCALAPPDATA
+        }
+
+        if ($RuntimeParent) {
             $FolderName = Split-Path -Path $Source -Leaf
-            if ($Target) {
-                Write-Host "`n[WARN] Overwriting `$Target value..." -ForegroundColor DarkYellow
-            }
-            $Target = Join-Path -Path $env:APPDATA -ChildPath $FolderName
+            $Target = Join-Path -Path $RuntimeParent -ChildPath $FolderName
         }
 
         if (-not(Test-Path $Source)) {
@@ -189,21 +199,34 @@ function Dismount-ExternalRuntimeData {
         Path or name of runtime folder mounted by scoop.
 
     .PARAMETER AppData
-        Dismount folder in $env:APPDATA with folder name in Target parameter. Value of $Target will be overwritten.
+        Dismount folder in $env:APPDATA with folder name in Target parameter. Parent path in $Target will be overwritten. Conflicts with parameter LocalAppData.
+
+    .PARAMETER LocalAppData
+        Dismount folder in $env:LOCALAPPDATA with folder name in Target parameter. Parent path in $Target will be overwritten. Conflicts with parameter AppData.
     #>
-    [CmdletBinding()]
+    [CmdletBinding(DefaultParameterSetName = "AppData")]
     param (
         [Parameter(Mandatory = $true, Position = 0)]
         [Alias("TargetPath", "Path", "Name")]
         [string] $Target,
-        [Parameter(Mandatory = $false, Position = 1)]
-        [switch] $AppData
+        [Parameter(Mandatory = $false, ParameterSetName = "AppData")]
+        [switch] $AppData,
+        [Parameter(Mandatory = $true, ParameterSetName = "LocalAppData")]
+        [switch] $LocalAppData
     )
 
     try {
         if ($AppData) {
+            $RuntimeParent = $env:APPDATA
+        }
+
+        if ($LocalAppData) {
+            $RuntimeParent = $env:LOCALAPPDATA
+        }
+
+        if ($RuntimeParent) {
             $FolderName = Split-Path -Path $Target -Leaf
-            $Target = Join-Path -Path $env:APPDATA -ChildPath $FolderName
+            $Target = Join-Path -Path $RuntimeParent -ChildPath $FolderName
         }
 
         Write-Host "`nDismounting runtime cache..." -ForegroundColor Yellow
