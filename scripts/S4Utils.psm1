@@ -78,11 +78,11 @@ function Add-ProfileContent {
     )
 
     try {
-        if (-not(Test-Path $PROFILE)) {
-            $Content | Out-File -FilePath $PROFILE -Encoding UTF8 -Force
-        } else {
+        if (Test-Path $PROFILE) {
             $NewLine = [Environment]::NewLine
             Add-Content -Path $PROFILE -Value "$NewLine$Content" -Encoding UTF8 -NoNewLine
+        } else {
+            $Content | Out-File -FilePath $PROFILE -Encoding UTF8 -Force
         }
     } catch {
         Write-Host "[ERROR] Failed to add PowerShell profile content: $_" -ForegroundColor Red
