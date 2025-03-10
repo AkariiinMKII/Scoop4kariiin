@@ -93,7 +93,7 @@ _Import files persisted by other app._
 |`PersistDir`|String|&check;|Path of persist directory. Use `$persist_dir` here.|
 |`SourceApp`|String|&check;|Name of source app to import from.|
 |`ConflictAction`|String|&cross;|Actions when item conflicts.<br/>Use `Skip` to skip entire importing process.<br/>Use `Mix` to skip conflict items in target directory and import non-conflict ones from source directory.<br/>Use `Overwrite` to force import items from source directory and keep non-conflict ones in target directory.<br/>Use `ReplaceDir` to totally replace entire directory.|
-|`Select`|String|&cross;|Specific items to import. Use `,` to separate multiple values.|
+|`Select`|String Array|&cross;|Specific items to import. Use `,` to separate multiple values.|
 |`Sync`|Switch|&cross;|Create junction instead of copying files.|
 |`Backup`|Switch|&cross;|Rename original item instead of removing it.|
 
@@ -109,7 +109,7 @@ _Create items in persist directory._
 |----|:----:|:----:|----|
 |`PersistDir`|String|&check;|Path of persist directory. Use `$persist_dir` here.|
 |`Name`|String|&check;|Name of item to create. Use `,` to separate multiple values.|
-|`Type`|String|&check;|Type of item to create.|
+|`Type`|String|&check;|Type of item to create. Support `Directory` and `File`.|
 |`Content`|String|&cross;|Initial content of file, use with parameter `-Type File`.|
 |`Force`|Switch|&cross;|Force overwrite if target exists.|
 |`Backup`|Switch|&cross;|Rename original item instead of removing it, use with parameter `-Force`.|
