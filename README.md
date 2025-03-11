@@ -36,4 +36,4 @@ scoop install <manifest>
 
 To make a new manifest contribution, please read the [Contributing Guide](https://github.com/ScoopInstaller/.github/blob/main/.github/CONTRIBUTING.md) and [App Manifests](https://github.com/ScoopInstaller/Scoop/wiki/App-Manifests) wiki page.
 
-Additionally, here is a [PowerShell Script Module](scripts/README.md) to help building app manifests.
+Additionally, here is a [PowerShell Script Module](https://github.com/AkariiinMKII/Scoop4kariiinUtils) to help building app manifests.

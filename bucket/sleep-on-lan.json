@@ -43,7 +43,7 @@
         "    $Content = $Content.Replace('$SOLBinPath', \"$SOLBinPath\")",
         "    $Content = $Content.Replace('$SOLLogPath', \"$SOLLogPath\")",
         "    $Content = $Content.Replace('$SOLPort', \"$SOLPort\")",
-        "    $Content | Set-Content -Path \"$dir\\install-service.ps1\"",
+        "    $Content | Out-File -FilePath \"$dir\\install-service.ps1\" -Encoding UTF8",
         "    Write-Host \"Installing system service ...\" -ForegroundColor Yellow",
         "    Write-Host \"Please approve permission request if UAC prompt pops up.\" -ForegroundColor Yellow",
         "    Start-Sleep -Seconds 1",
