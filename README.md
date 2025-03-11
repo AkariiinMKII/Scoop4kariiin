@@ -22,15 +22,19 @@ scoop install <manifest>
 ```
 
 > [!IMPORTANT]
-> Some manifests use custom scripts stored in bucket.
+> Some manifests use functions stored in PowerShell Script Module named Scoop4kariiinUtils.
 >
-> In this case, installing apps directly from manifest URL will fail with following error:
+> Without this module, custom scripts may fail with following error:
 >
 > ```Plaintext
-> Missing files, please re-add Scoop4kariiin bucket and re-install this app.
+> Import-Module : The specified module 'Scoop4kariiinUtils' was not loaded because no valid module file was found in any module directory.
 > ```
 >
-> Please add the bucket to your device before installing.
+> Please install the app on your device and try again
+>
+>```PowerShell
+> scoop install Scoop4kariiin/Scoop4kariiinUtils
+> ```
 
 ## How do I contribute new manifests?
 
