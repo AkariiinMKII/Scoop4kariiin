@@ -6,7 +6,7 @@
     "notes": [
         "This manifest uses a script, which needs admin privilege, to install sleep-on-lan as system service.",
         "If it failed in installation, you can manually run:",
-        "sudo \"$dir\\install-service.ps1\"",
+        "gsudo \"$dir\\install-service.ps1\"",
         "",
         "You can edit \"$dir\\sol.json\" for more configurations, and then force update this app to apply it.",
         "Please read the documentations first: https://github.com/SR-G/sleep-on-lan#configuration"
@@ -47,7 +47,7 @@
         "    Write-Host \"Installing system service ...\" -ForegroundColor Yellow",
         "    Write-Host \"Please approve permission request if UAC prompt pops up.\" -ForegroundColor Yellow",
         "    Start-Sleep -Seconds 1",
-        "    sudo \"$dir\\install-service.ps1\"",
+        "    gsudo \"$dir\\install-service.ps1\"",
         "    if ($?) {",
         "        Write-Host \"Successfully installed system service!\" -ForegroundColor Green",
         "    } else {",
@@ -65,7 +65,7 @@
         "Write-Host \"Uninstalling system service ...\" -ForegroundColor Yellow",
         "Write-Host \"Please approve permission request if UAC prompt pops up.\" -ForegroundColor Yellow",
         "Start-Sleep -Seconds 1",
-        "sudo \"$dir\\remove-service.ps1\""
+        "gsudo \"$dir\\remove-service.ps1\""
     ],
     "checkver": "github",
     "autoupdate": {
