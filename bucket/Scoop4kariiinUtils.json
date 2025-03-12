@@ -9,7 +9,10 @@
     "psmodule": {
         "name": "Scoop4kariiinUtils"
     },
-    "pre_uninstall": "Write-Host '[WARN] Manifests in Scoop4kariiin bucket need functions in this app, try re-installing if error occurs.' -ForegroundColor Yellow",
+    "pre_uninstall": [
+        "Write-Host ''",
+        "Write-Host '[WARN] Manifests in Scoop4kariiin bucket need functions in this app, try re-installing if error occurs.' -ForegroundColor Yellow"
+    ],
     "checkver": {
         "url": "https://api.github.com/repos/AkariiinMKII/Scoop4kariiinUtils/tags",
         "regex": "tags/v([\\d.]+)"
