@@ -9,6 +9,11 @@
     "psmodule": {
         "name": "Scoop4kariiinUtils"
     },
+    "installer": {
+        "script": [
+            "Remove-Item \"$dir\\LICENSE\", \"$dir\\README.md\", \"$dir\\.gitignore\" -Force -Recurse -ErrorAction SilentlyContinue"
+        ]
+    },
     "pre_uninstall": [
         "Write-Host ''",
         "Write-Host '[WARN] Manifests in Scoop4kariiin bucket need functions in this app, try re-installing if error occurs.' -ForegroundColor Yellow"
