@@ -57,7 +57,7 @@
         "$CFWPath = Get-ChildItem -Path \"$dir\" -Filter \"Clash for Windows.exe\" | Select-Object -ExpandProperty Target",
         "$CorePath = Get-ChildItem -Path \"$dir\" -Filter \"clash-win*.exe\" -Recurse | Select-Object -ExpandProperty Target",
         "if (Test-Path \"$ScriptsDir\\update-firewall-rules.ps1\") {",
-        "    $Content = Get-Content \"$ScriptsDir\\update-firewall-rules.ps1\"",
+        "    $Content = Get-Content \"$ScriptsDir\\update-firewall-rules.ps1\" -Encoding UTF8",
         "    $Content = $Content.Replace('$CFWPath', \"$CFWPath\")",
         "    $Content = $Content.Replace('$CorePath', \"$CorePath\")",
         "    $Content | Out-File -FilePath \"$dir\\update-firewall-rules.ps1\" -Encoding UTF8",
