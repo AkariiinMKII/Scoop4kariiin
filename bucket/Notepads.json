@@ -26,6 +26,7 @@
     "persist": "Settings",
     "uninstaller": {
         "script": [
+            "$ProgressPreference = \"SilentlyContinue\"",
             "Stop-Process -Name Notepads -ErrorAction Ignore",
             "Start-Sleep -Milliseconds 250",
             "$package = Get-AppxPackage -Name '*JackieLiu*Notepads*'",
