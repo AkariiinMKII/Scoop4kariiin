@@ -19,19 +19,26 @@
         "    Start-Sleep -Milliseconds 250",
         "    $package_name = (Get-AppxPackage -Name '*JackieLiu*Notepads*').PackageFamilyName",
         "}",
-        "$notepads_settings = \"$env:LOCALAPPDATA\\Packages\\$package_name\\Settings\\settings.dat\"",
-        "while (-not (Test-Path $notepads_settings)) { Start-Sleep -Milliseconds 250 }",
-        "Copy-Item -Path \"$persist_dir\\Settings\" -Destination \"$env:LOCALAPPDATA\\Packages\\$package_name\" -Force -Recurse"
+        "$package_dir = \"$env:LOCALAPPDATA\\Packages\\$package_name\"",
+        "while (-not (Test-Path \"$package_dir\\Settings\\settings.dat\")) { Start-Sleep -Milliseconds 250 }",
+        "Copy-Item -Path \"$persist_dir\\Settings\" -Destination \"$package_dir\" -Force -Recurse",
+        "Copy-Item -Path \"$persist_dir\\LocalState\" -Destination \"$package_dir\" -Force -Recurse"
     ],
-    "persist": "Settings",
+    "persist": [
+        "Settings",
+        "LocalState"
+    ],
     "uninstaller": {
         "script": [
             "$ProgressPreference = \"SilentlyContinue\"",
             "Stop-Process -Name Notepads -ErrorAction Ignore",
             "Start-Sleep -Milliseconds 250",
             "$package = Get-AppxPackage -Name '*JackieLiu*Notepads*'",
+            "$package_dir = \"$env:LOCALAPPDATA\\Packages\\$($package.PackageFamilyName)\"",
             "Remove-Item -Path \"$persist_dir\\Settings\" -Force -Recurse -ErrorAction Ignore",
-            "Copy-Item -Path \"$env:LOCALAPPDATA\\Packages\\$($package.PackageFamilyName)\\Settings\" -Destination \"$persist_dir\" -Force -Recurse",
+            "Remove-Item -Path \"$persist_dir\\LocalState\" -Force -Recurse -ErrorAction Ignore",
+            "Copy-Item -Path \"$package_dir\\Settings\" -Destination \"$persist_dir\" -Force -Recurse",
+            "Copy-Item -Path \"$package_dir\\LocalState\" -Destination \"$persist_dir\" -Force -Recurse",
             "Remove-AppxPackage $package"
         ]
     },
