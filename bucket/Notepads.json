@@ -39,6 +39,7 @@
             "Remove-Item -Path \"$persist_dir\\LocalState\" -Force -Recurse -ErrorAction Ignore",
             "Copy-Item -Path \"$package_dir\\Settings\" -Destination \"$persist_dir\" -Force -Recurse",
             "Copy-Item -Path \"$package_dir\\LocalState\" -Destination \"$persist_dir\" -Force -Recurse",
+            "Get-ChildItem -Path \"$persist_dir\\LocalState\" -Filter \"_WinStoreSDK_Receipt_Cache\" | Remove-Item -Force -Recurse -ErrorAction Ignore",
             "Remove-AppxPackage $package"
         ]
     },
