@@ -13,11 +13,9 @@
         ]
     },
     "post_install": [
-        "$package_name = Get-AppxPackage -Name '*JackieLiu*Notepads*' | Select-Object -ExpandProperty PackageFamilyName",
-        "$package_dir = Resolve-Path -Path \"$env:LOCALAPPDATA\\Packages\\$package_name\"",
+        "$package_dir = Resolve-Path -Path \"$env:LOCALAPPDATA\\Packages\\*JackieLiu*Notepads*\" | Select-Object -ExpandProperty Path",
         "Import-Module -Name Scoop4kariiinUtils -ErrorAction Stop",
-        "Mount-ExternalRuntimeData -Source \"$persist_dir\\Settings\" -Target \"$package_dir\\Settings\"",
-        "Mount-ExternalRuntimeData -Source \"$persist_dir\\LocalState\" -Target \"$package_dir\\LocalState\"",
+        "Mount-ExternalRuntimeData -Source \"$persist_dir\\LocalAppData\" -Target \"$package_dir\"",
         "Remove-Module -Name Scoop4kariiinUtils -ErrorAction SilentlyContinue"
     ],
     "uninstaller": {
@@ -28,7 +26,7 @@
             "    Write-Host \"`nNotepads is running, would you like to continue?\" -ForegroundColor Yellow",
             "    $answer = Read-Host -Prompt \"Enter 'y' to continue, any other key to cancel\"",
             "    if ('y' -eq $answer) {",
-            "        Write-Host \"Stopping process...\" -ForegroundColor Yellow",
+            "        Write-Host \"Stopping process...\" -ForegroundColor Yellow -NoNewline",
             "        Stop-Process -Name Notepads -ErrorAction Stop",
             "        Start-Sleep -Milliseconds 250",
             "    } else {",
@@ -36,8 +34,8 @@
             "        break",
             "    }",
             "}",
-            "Get-AppxPackage -Name '*JackieLiu*Notepads*' | Remove-AppxPackage -ErrorAction Stop",
-            "Get-ChildItem -Path \"$persist_dir\\LocalState\" -Filter \"_WinStoreSDK_Receipt_Cache\" | Remove-Item -Force -Recurse -ErrorAction SilentlyContinue"
+            "Get-AppxPackage -Name '*JackieLiu*Notepads*' | Remove-AppxPackage -PreserveRoamableApplicationData -ErrorAction Stop",
+            "Resolve-Path -Path \"$env:LOCALAPPDATA\\Packages\\*JackieLiu*Notepads*\" | Remove-Item -Force -Recurse -ErrorAction SilentlyContinue"
         ]
     },
     "checkver": {
