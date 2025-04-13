@@ -8,20 +8,14 @@
     "installer": {
         "script": "Invoke-ExternalCommand -FilePath \"$dir\\vs_buildtools.exe\" -Args @('--installPath', \"$dir\\vs\\\", '--quiet', '--norestart', '--wait', '--add', 'Microsoft.VisualStudio.Workload.VCTools', '--add', 'Microsoft.VisualStudio.Component.VC.ATL', '--add', 'Microsoft.VisualStudio.Workload.MSBuildTools', '--includeRecommended') -RunAs | Out-Null"
     },
-    "uninstaller": {
-        "script": "Invoke-ExternalCommand -FilePath \"$dir\\vs_buildtools.exe\" -Args @('uninstall', '--installPath', \"$dir\\vs\\\", '--quiet', '--norestart', '--wait') -RunAs | Out-Null"
-    },
     "env_add_path": [
         "vs\\Common7\\Tools",
         "vs\\Common7\\IDE",
         "vs\\MSBuild\\Current\\bin"
     ],
-    "bin": [
-        "vs\\Common7\\Tools\\LaunchDevCmd.bat",
-        "vs\\Common7\\Tools\\VsDevCmd.bat",
-        "vs\\Common7\\Tools\\VsMSBuildCmd.bat",
-        "vs\\Common7\\Tools\\Launch-VsDevShell.ps1"
-    ],
+    "uninstaller": {
+        "script": "Invoke-ExternalCommand -FilePath \"$dir\\vs_buildtools.exe\" -Args @('uninstall', '--installPath', \"$dir\\vs\\\", '--quiet', '--norestart', '--wait') -RunAs | Out-Null"
+    },
     "checkver": {
         "url": "https://learn.microsoft.com/en-us/visualstudio/releases/2022/release-notes",
         "regex": ">Version ([\\d.]+)<"
