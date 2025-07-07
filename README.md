@@ -22,15 +22,13 @@ scoop install <manifest>
 ```
 
 > [!IMPORTANT]
-> Some manifests use functions stored in PowerShell Script Module named Scoop4kariiinUtils.
+> Some of the manifests use custom functions stored in a PowerShell Script Module named Scoop4kariiinUtils.
 >
-> Without this module, custom scripts may fail with following error:
+> Without this module, custom scripts may fail with errors like:
 >
-> ```Plaintext
-> Import-Module : The specified module 'Scoop4kariiinUtils' was not loaded because no valid module file was found in any module directory.
-> ```
+> > Import-Module : The specified module 'Scoop4kariiinUtils' was not loaded because no valid module file was found in any module directory.
 >
-> Please install the app on your device and try again
+> Please install the module on your device and try again
 >
 >```PowerShell
 > scoop install Scoop4kariiin/Scoop4kariiinUtils
