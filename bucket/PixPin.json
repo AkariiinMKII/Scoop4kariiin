@@ -16,7 +16,7 @@
         "            t = $CurrentUnixTime",
         "        }",
         "    }",
-        "    $ConfigContent | ConvertTo-Json -Compress | Out-File -FilePath $ConfigPath -Encoding UTF8 -Force",
+        "    $ConfigContent | ConvertTo-Json -Depth 5 -Compress | Out-File -FilePath $ConfigPath -Encoding UTF8 -Force",
         "}"
     ],
     "shortcuts": [
