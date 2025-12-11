@@ -55,7 +55,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://download.mikrotik.com/routeros/winbox/$match1beta$match2/WinBox_Windows.zip"
+                "url": "https://download.mikrotik.com/routeros/winbox/$match1beta$match2/WinBox_Windows.zip",
+                "hash": {
+                    "url": "https://download.mikrotik.com/routeros/winbox/$match1beta$match2/WinBox_Windows.zip.sha256"
+                }
             }
         }
     }
