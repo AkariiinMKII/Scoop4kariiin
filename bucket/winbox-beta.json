@@ -48,8 +48,8 @@
         "}"
     ],
     "checkver": {
-        "url": "https://mikrotik.com/download",
-        "regex": "WinBox ([\\d.]+)beta(\\d+)",
+        "url": "https://mikrotik.com/download/winbox",
+        "regex": ">v([\\d.]+)beta(\\d+)<",
         "replace": "${1}.${2}"
     },
     "autoupdate": {
