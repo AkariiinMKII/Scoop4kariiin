@@ -1,5 +1,5 @@
 {
-    "version": "4.0..1",
+    "version": "4.0.1",
     "description": "A small utility that allows administration of MikroTik RouterOS using a fast and simple GUI.",
     "homepage": "https://mikrotik.com/",
     "license": "Unknown",
@@ -22,13 +22,13 @@
             "shortcuts": [
                 [
                     "WinBox.exe",
-                    "WinBox Beta"
+                    "WinBox"
                 ]
             ]
         }
     },
     "post_install": [
-        "$ScriptsDir = Find-BucketDirectory -Root -Name $bucket | Join-Path -ChildPath \"scripts\\winbox-beta\"",
+        "$ScriptsDir = Find-BucketDirectory -Root -Name $bucket | Join-Path -ChildPath \"scripts\\WinBox-v4\"",
         "$BinPath = Get-ChildItem -Path \"$dir\" -Filter \"WinBox.exe\" | Select-Object -ExpandProperty Target",
         "if (Test-Path \"$ScriptsDir\\update-firewall-rules.ps1\") {",
         "    $Content = Get-Content \"$ScriptsDir\\update-firewall-rules.ps1\" -Encoding UTF8",
@@ -49,15 +49,14 @@
     ],
     "checkver": {
         "url": "https://mikrotik.com/download/winbox",
-        "regex": ">v([\\d.]+)([beta]*)([rc]*\\d+)<",
-        "replace": "${1}.${3}"
+        "regex": ">v([\\d.]+)<"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://download.mikrotik.com/routeros/winbox/$match1$match2$match3/WinBox_Windows.zip",
+                "url": "https://download.mikrotik.com/routeros/winbox/$version/WinBox_Windows.zip",
                 "hash": {
-                    "url": "https://download.mikrotik.com/routeros/winbox/$match1$match2$match3/WinBox_Windows.zip.sha256"
+                    "url": "https://download.mikrotik.com/routeros/winbox/$version/WinBox_Windows.zip.sha256"
                 }
             }
         }
