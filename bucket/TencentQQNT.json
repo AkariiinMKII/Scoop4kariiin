@@ -1,5 +1,5 @@
 {
-    "version": "9.9.30.260511",
+    "version": "9.9.30.260511.6a035910",
     "description": "A new version of Tencent QQ based on Electron.",
     "homepage": "https://im.qq.com/pcqq/index.shtml",
     "license": "Unknown",
@@ -52,19 +52,19 @@
             "$fetch_build_hash = $matches[1]",
             "$fetch_version_head = $matches[2]",
             "$fetch_version_tail = $matches[3]",
-            "$fetch_version = ($fetch_version_head, $fetch_version_tail, $fetch_build_hash) -Join \"_\"",
-            "$current_version_tail = $json.version -Split \"\\.\" | Select-Object -Last 1",
-            "$current_build_regex = [regex]\"guanwang\\/(\\w{8})\"",
-            "$current_build_hash = $json.architecture.\"32bit\".url -match $current_build_regex | Out-Null; $matches[1]",
+            "$fetch_version = ($fetch_version_head, $fetch_version_tail, $fetch_build_hash) -Join \".\"",
+            "$current_version = $json.version",
+            "$current_version_tail = $current_version -Split \"\\.\" | Select-Object -Last 1 -Skip 1",
             "if ([int]$fetch_version_tail -ge [int]$current_version_tail) {",
             "    return $fetch_version",
             "} else {",
             "    Write-Warning \"[TencentQQNT] Fetched latest version: $fetch_version, aborting update...\"",
-            "    return ($json.version, $current_build_hash) -Join \"_\"",
+            "    Write-Warning \"[TencentQQNT] Using current version: $current_version\"",
+            "    return $current_version",
             "}"
         ],
-        "regex": "([\\d.]+)_([\\d]+)_([\\w]+)",
-        "replace": "${1}.${2}"
+        "regex": "([\\d.]+)\\.([\\d]+)\\.([\\w]+)",
+        "replace": "${1}.${2}.${3}"
     },
     "autoupdate": {
         "architecture": {
