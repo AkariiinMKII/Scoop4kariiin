@@ -33,9 +33,9 @@
     ],
     "checkver": {
         "url": "https://pixpin.com/download/",
-        "regex": "PixPin_intl_en-us_([\\d.]+)\\.zip"
+        "regex": "PixPin_win_([\\d.]+)\\.zip"
     },
     "autoupdate": {
-        "url": "https://download.pixpinapp.com/PixPin_intl_en-us_$version.zip"
+        "url": "https://down.pixpin.cn/PixPin_win_$version.zip"
     }
 }
