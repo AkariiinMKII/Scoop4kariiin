@@ -9,7 +9,7 @@
         "https://github.com/AkariiinMKII/Scoop4kariiinUtils/blob/main/README.md"
     ],
     "url": "https://github.com/AkariiinMKII/Scoop4kariiinUtils/archive/v0.1.4.zip",
-    "hash": "5e5fec7554674884f4096d6dc82a265ef765a4bed0fa0eeba3b12943be55582f",
+    "hash": "a20690d81f94efc953be94f479e358bf4872fff11f72034f9ca345287217661e",
     "extract_dir": "Scoop4kariiinUtils-0.1.4",
     "psmodule": {
         "name": "Scoop4kariiinUtils"
