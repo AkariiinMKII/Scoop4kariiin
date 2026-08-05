@@ -19,7 +19,8 @@
     },
     "pre_uninstall": [
         "Write-Host ''",
-        "Write-Host '[WARN] Manifests in Scoop4kariiin bucket need functions in this app, try re-installing if error occurs.' -ForegroundColor Yellow"
+        "Write-Warning 'Scoop4kariiinUtils is required by Scoop4kariiin bucket, uninstalling this module may break the functionality.'",
+        "Write-Warning 'Try installing it if error occurs during use.'"
     ],
     "checkver": {
         "url": "https://api.github.com/repos/AkariiinMKII/Scoop4kariiinUtils/tags",
