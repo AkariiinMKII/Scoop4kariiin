@@ -40,6 +40,7 @@
     },
     "installer": {
         "script": [
+            "Write-Host \"\"",
             "if (-not (Test-Path \"$persist_dir\\data\")) {",
             "    New-Item \"$persist_dir\\data\" -Type Directory -Force | Out-Null",
             "    if (Test-Path \"$env:USERPROFILE\\.config\\clash\") {",
@@ -47,7 +48,6 @@
             "        Copy-Item -Path \"$env:USERPROFILE\\.config\\clash\\*\" -Destination \"$persist_dir\\data\" -Recurse -Container",
             "    }",
             "}",
-            "Write-Host \"\"",
             "Import-Module -Name Scoop4kariiinUtils -ErrorAction Stop",
             "Mount-ExternalRuntimeData -Source \"$persist_dir\\clash_win\" -AppData",
             "Remove-Module -Name Scoop4kariiinUtils -ErrorAction SilentlyContinue"
