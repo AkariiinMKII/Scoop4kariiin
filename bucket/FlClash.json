@@ -43,7 +43,7 @@
             "Write-Host \"Admin privileges are required to clean up system service and ensure uninstallation success.\" -ForegroundColor Yellow",
             "Write-Host \"Please approve permission request if UAC prompt pops up.\" -ForegroundColor Yellow",
             "Start-Sleep -Seconds 1",
-            "Write-Host \"Cleaning up service `'FlClashHelperService`'...\" -NoNewline",
+            "Write-Host \"Cleaning up system service `'FlClashHelperService`'...\" -NoNewline",
             "gsudo { sc.exe stop FlClashHelperService | Out-Null; sc.exe delete FlClashHelperService | Out-Null }",
             "if ($LastExitCode) {",
             "    Write-Host \"If the uninstallation failed with file in use errors.\" -ForegroundColor Yellow",
