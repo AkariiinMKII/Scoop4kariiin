@@ -1,11 +1,16 @@
 # Scoop4kariiin
 
+___A bucket for [Scoop](https://github.com/ScoopInstaller/Scoop), the Windows command-line installer.___
+
 [![License](https://img.shields.io/github/license/AkariiinMKII/Scoop4kariiin?logo=unlicense&logoColor=959DA5&labelColor=292D32&label=License&color=34D058)](https://github.com/AkariiinMKII/Scoop4kariiin/blob/main/LICENSE)
 [![Repo Size](https://img.shields.io/github/repo-size/AkariiinMKII/Scoop4kariiin?logo=github&logoColor=959DA5&labelColor=292D32&label=Repo%20Size&color=34D058)](https://github.com/AkariiinMKII/Scoop4kariiin)
 [![Tests](https://github.com/AkariiinMKII/Scoop4kariiin/actions/workflows/ci.yml/badge.svg)](https://github.com/AkariiinMKII/Scoop4kariiin/actions/workflows/ci.yml)
 [![Excavator](https://github.com/AkariiinMKII/Scoop4kariiin/actions/workflows/excavator.yml/badge.svg)](https://github.com/AkariiinMKII/Scoop4kariiin/actions/workflows/excavator.yml)
 
-A bucket for [Scoop](https://github.com/ScoopInstaller/Scoop), the Windows command-line installer.
+> [!NOTE]
+> Manifests with additional requirements, such as the specially prepared PowerShell functions or admin privileges, that not suitable for mainstream buckets will be stored and maintained here.
+>
+> It is recommended to choose manifests in [official buckets](https://github.com/ScoopInstaller/Scoop#known-application-buckets) or [dorado](https://github.com/chawyehsu/dorado) first if they meet your needs.
 
 ## How do I install these manifests?
 
