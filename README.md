@@ -18,20 +18,20 @@ Simply with following steps:
 
 1. Add the bucket to your scoop
 
-```PowerShell
-scoop bucket add Scoop4kariiin https://github.com/AkariiinMKII/Scoop4kariiin
-```
+    ```text
+    scoop bucket add Scoop4kariiin https://github.com/AkariiinMKII/Scoop4kariiin
+    ```
 
 2. Install apps by the name
 
-```PowerShell
-scoop install <app>
-```
+    ```text
+    scoop install <app>
+    ```
 
 > [!NOTE]
 > If app name conflicts with ones in another bucket, prepend the bucket name to disambiguate
 >
-> ```PowerShell
+> ```text
 > scoop install Scoop4kariiin/<app>
 > ```
 
@@ -44,7 +44,7 @@ scoop install <app>
 >
 > Please install the module on your device and try again
 >
->```PowerShell
+> ```text
 > scoop install Scoop4kariiin/Scoop4kariiinUtils
 > ```
 
