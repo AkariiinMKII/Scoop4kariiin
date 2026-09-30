@@ -49,7 +49,7 @@
             "    Write-Host \"Manually stop and delete the service `'FlClashHelperService`', then try again.\" -ForegroundColor Yellow",
             "    Write-Host \"Or open the updated FlClash app witn TUN mode on before running scoop cleanup.\" -ForegroundColor Yellow",
             "} else {",
-            "    Write-Host \"success.\" -ForegroundColor Green",
+            "    Write-Host \"Success.\" -ForegroundColor Green",
             "}"
         ]
     },
