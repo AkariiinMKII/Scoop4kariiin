@@ -18,9 +18,9 @@
         "script": "Remove-Item \"$dir\\LICENSE\", \"$dir\\README.md\", \"$dir\\.gitignore\" -Force -Recurse -ErrorAction SilentlyContinue"
     },
     "pre_uninstall": [
-        "Write-Host ''",
-        "Write-Warning 'Scoop4kariiinUtils is required by Scoop4kariiin bucket, uninstalling this module may break the functionality.'",
-        "Write-Warning 'Try installing it if error occurs during use.'"
+        "Write-Host \"\"",
+        "Write-Host \"WARN  `'Scoop4kariiinUtils`' is required by scoop bucket `'Scoop4kariiin`', uninstalling it may break the functionality.\" -ForegroundColor DarkYellow",
+        "Write-Host \"WARN  Try installing this app if you encounter relevant error messages during use.\" -ForegroundColor DarkYellow"
     ],
     "checkver": {
         "url": "https://api.github.com/repos/AkariiinMKII/Scoop4kariiinUtils/tags",
