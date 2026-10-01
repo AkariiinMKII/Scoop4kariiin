@@ -76,8 +76,11 @@
         "    Write-Host \"Success.\" -ForegroundColor Green",
         "}"
     ],
-    "checkver": "github",
+    "checkver": {
+        "url": "https://github.com/SR-G/sleep-on-lan/tags",
+        "regex": "tag\\/([\\d.]+)\\-([\\w]+)"
+    },
     "autoupdate": {
-        "url": "https://github.com/SR-G/sleep-on-lan/releases/download/$version-RELEASE/SleepOnLAN-$version-RELEASE.zip"
+        "url": "https://github.com/SR-G/sleep-on-lan/releases/download/$version-$match2/SleepOnLAN-$version-$match2.zip"
     }
 }
